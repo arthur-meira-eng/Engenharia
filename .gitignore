@@ -1,0 +1,17 @@
+@"
+# Ignorar pastas de compilação em qualquer lugar
+**/build/
+**/bin/
+**/obj/
+
+# Ignorar executáveis e temporários
+*.exe
+*.o
+*.out
+
+# Ignorar configurações do VS Code
+**/.vscode/
+
+# Ignorar pastas de Aulas
+**/Aulas/
+"@ | Out-File -Encoding UTF8 .gitignore
