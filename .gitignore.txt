@@ -1,0 +1,16 @@
+# Ignorar pastas de compilação
+build/
+bin/
+obj/
+
+# Ignorar executáveis e temporários
+*.exe
+*.o
+*.out
+
+# Ignorar configurações locais
+.vscode/
+
+# Ignorar pastas de aula (mantendo apenas projetos principais)
+Aulas/
+**/Aulas/
