@@ -14,4 +14,4 @@
 
 # Ignorar pastas de Aulas
 **/Aulas/
-"@ | Out-File -Encoding UTF8 .gitignore
+"@ | Out-File -Encoding UTF8 .gitignore.history/
