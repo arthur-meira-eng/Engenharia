@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/arthu/Desktop/Engenharia/Sistemas Embarcados/PIC/Projetos/Projeto_Treino_tiro/Porjeto_Jader_V1.X/_build/Porjeto_Jader_V1/default",
+  "command": "c:\\PROGRA~1\\MICROC~1\\xc8\\v3.10\\bin\\xc8-cc.exe -DXPRJ_default=default -D__12F629__ -D__DEBUG=1 -D__MPLAB_DEBUGGER_SIMULATOR=1 -I\"C:\\Users\\arthu\\Desktop\\Engenharia\\Sistemas Embarcados\\PIC\\Projetos\\Projeto_Treino_tiro\\Porjeto_Jader_V1.X\\cmake\\Porjeto_Jader_V1\\default\\..\\..\\..\" -c -mcpu=12F629 -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file -ginhx32 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall -mno-default-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto -o CMakeFiles\\Porjeto_Jader_V1_default_default_XC8_compile.dir\\6c3d887dc102c9686593a263d1c443a0\\TX.c.p1 -c \"C:\\Users\\arthu\\Desktop\\Engenharia\\Sistemas Embarcados\\PIC\\Projetos\\Projeto_Treino_tiro\\Porjeto_Jader_V1.X\\TX.c\"",
+  "file": "C:/Users/arthu/Desktop/Engenharia/Sistemas Embarcados/PIC/Projetos/Projeto_Treino_tiro/Porjeto_Jader_V1.X/TX.c",
+  "output": "C:/Users/arthu/Desktop/Engenharia/Sistemas Embarcados/PIC/Projetos/Projeto_Treino_tiro/Porjeto_Jader_V1.X/_build/Porjeto_Jader_V1/default/CMakeFiles/Porjeto_Jader_V1_default_default_XC8_compile.dir/6c3d887dc102c9686593a263d1c443a0/TX.c.p1"
+}
+]

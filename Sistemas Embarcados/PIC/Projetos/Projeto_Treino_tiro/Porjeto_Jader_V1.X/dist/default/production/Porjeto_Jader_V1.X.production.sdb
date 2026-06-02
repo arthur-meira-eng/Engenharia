@@ -1,0 +1,133 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F628A ]
+[d frameptr 0 ]
+"10 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"37 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Porjeto_Jader_V1.X\RX.c
+[v _isr isr `II(v  1 e 1 0 ]
+"55
+[v _main main `(v  1 e 1 0 ]
+"8 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Porjeto_Jader_V1.X\servo.c
+[v _servo_init servo_init `(v  1 e 1 0 ]
+"18
+[v _servo_set_posicao servo_set_posicao `(v  1 e 1 0 ]
+"25
+[v _servo_tick_isr servo_tick_isr `(v  1 e 1 0 ]
+"6 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Porjeto_Jader_V1.X\uart.c
+[v _uart_init uart_init `(v  1 e 1 0 ]
+"19
+[v _uart_rx_isr uart_rx_isr `(v  1 e 1 0 ]
+"164 C:/Program Files/Microchip/MPLABX/v6.30/packs/Microchip/PIC16Fxxx_DFP/1.7.162/xc8\pic\include\proc/pic16f628a.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+"226
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"450
+[v _TMR1L TMR1L `VEuc  1 e 1 @14 ]
+"457
+[v _TMR1H TMR1H `VEuc  1 e 1 @15 ]
+"464
+[v _T1CON T1CON `VEuc  1 e 1 @16 ]
+"758
+[v _RCREG RCREG `VEuc  1 e 1 @26 ]
+"765
+[v _CMCON CMCON `VEuc  1 e 1 @31 ]
+"967
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1199
+[v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
+"1346
+[v _BRGH BRGH `VEb  1 e 0 @1218 ]
+"1406
+[v _CREN CREN `VEb  1 e 0 @196 ]
+"1424
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"1445
+[v _PEIE PEIE `VEb  1 e 0 @94 ]
+"1493
+[v _RB3 RB3 `VEb  1 e 0 @51 ]
+"1496
+[v _RB4 RB4 `VEb  1 e 0 @52 ]
+"1514
+[v _RCIE RCIE `VEb  1 e 0 @1125 ]
+"1517
+[v _RCIF RCIF `VEb  1 e 0 @101 ]
+"1529
+[v _RX9 RX9 `VEb  1 e 0 @198 ]
+"1535
+[v _SPEN SPEN `VEb  1 e 0 @199 ]
+"1541
+[v _SYNC SYNC `VEb  1 e 0 @1220 ]
+"1580
+[v _TMR1IE TMR1IE `VEb  1 e 0 @1120 ]
+"1583
+[v _TMR1IF TMR1IF `VEb  1 e 0 @96 ]
+"1667
+[v _TXEN TXEN `VEb  1 e 0 @1221 ]
+"25 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Porjeto_Jader_V1.X\RX.c
+[v _pos_servo1 pos_servo1 `uc  1 e 1 0 ]
+"26
+[v _pos_servo2 pos_servo2 `uc  1 e 1 0 ]
+"28
+[v _executando executando `uc  1 e 1 0 ]
+"29
+[v _etapa_auto etapa_auto `uc  1 e 1 0 ]
+"31
+[v _trava_botao trava_botao `uc  1 e 1 0 ]
+"4 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Porjeto_Jader_V1.X\servo.c
+[v _contador contador `VEus  1 s 2 contador ]
+"5
+[v _pulso1 pulso1 `VEuc  1 s 1 pulso1 ]
+"6
+[v _pulso2 pulso2 `VEuc  1 s 1 pulso2 ]
+"4 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Porjeto_Jader_V1.X\uart.c
+[v _dado_rx dado_rx `VEuc  1 e 1 0 ]
+"55 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Porjeto_Jader_V1.X\RX.c
+[v _main main `(v  1 e 1 0 ]
+{
+"80
+[v main@comando comando `uc  1 a 1 3 ]
+"168
+} 0
+"6 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Porjeto_Jader_V1.X\uart.c
+[v _uart_init uart_init `(v  1 e 1 0 ]
+{
+"16
+} 0
+"18 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Porjeto_Jader_V1.X\servo.c
+[v _servo_set_posicao servo_set_posicao `(v  1 e 1 0 ]
+{
+[v servo_set_posicao@pos1 pos1 `uc  1 p 1 wreg ]
+[v servo_set_posicao@pos1 pos1 `uc  1 p 1 wreg ]
+[v servo_set_posicao@pos2 pos2 `uc  1 p 1 4 ]
+"20
+[v servo_set_posicao@pos1 pos1 `uc  1 p 1 5 ]
+"22
+} 1
+"8
+[v _servo_init servo_init `(v  1 e 1 0 ]
+{
+"15
+} 0
+"37 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Porjeto_Jader_V1.X\RX.c
+[v _isr isr `II(v  1 e 1 0 ]
+{
+"49
+} 0
+"19 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Porjeto_Jader_V1.X\uart.c
+[v _uart_rx_isr uart_rx_isr `(v  1 e 1 0 ]
+{
+"22
+} 0
+"25 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Porjeto_Jader_V1.X\servo.c
+[v _servo_tick_isr servo_tick_isr `(v  1 e 1 0 ]
+{
+"52
+} 0

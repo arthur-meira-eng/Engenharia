@@ -1,0 +1,1843 @@
+
+
+Microchip MPLAB XC8 Assembler V3.10 build 20250813170317 
+                                                                                               Sun May 10 13:08:53 2026
+
+Microchip MPLAB XC8 C Compiler v3.10 (Free license) build 20250813170317 Og1 
+     1                           	processor	12F675
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	idataBANK0,global,class=CODE,space=0,delta=2,noexec
+     5                           	psect	cinit,global,class=CODE,space=0,merge=1,delta=2
+     6                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1,noexec
+     7                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1,noexec
+     8                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     9                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+    10                           	psect	maintext,global,class=CODE,space=0,split=1,delta=2
+    11                           	psect	text1,local,class=CODE,space=0,merge=1,delta=2
+    12                           	psect	text2,local,class=CODE,space=0,merge=1,delta=2
+    13                           	psect	text3,local,class=CODE,space=0,merge=1,delta=2
+    14                           	psect	text4,local,class=CODE,space=0,merge=1,delta=2
+    15                           	psect	text5,local,class=CODE,space=0,merge=1,delta=2
+    16                           	psect	text6,local,class=CODE,space=0,merge=1,delta=2
+    17                           	psect	text7,local,class=CODE,space=0,merge=1,delta=2
+    18                           	psect	text8,local,class=CODE,space=0,merge=1,delta=2
+    19                           	psect	text9,local,class=CODE,space=0,merge=1,delta=2
+    20                           	psect	text10,local,class=CODE,space=0,merge=1,delta=2
+    21                           	psect	text11,local,class=CODE,space=0,merge=1,delta=2
+    22                           	psect	text12,local,class=CODE,space=0,merge=1,delta=2,group=1
+    23                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    24                           	dabs	1,0x5E,2
+    25     0000                     
+    26                           ; Generated 26/03/2025 GMT
+    27                           ; 
+    28                           ; Copyright © 2025, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    29                           ; All rights reserved.
+    30                           ; 
+    31                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    32                           ; 
+    33                           ; Redistribution and use in source and binary forms, with or without modification, are
+    34                           ; permitted provided that the following conditions are met:
+    35                           ; 
+    36                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    37                           ;        conditions and the following disclaimer.
+    38                           ; 
+    39                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    40                           ;        of conditions and the following disclaimer in the documentation and/or other
+    41                           ;        materials provided with the distribution. Publication is not required when
+    42                           ;        this file is used in an embedded application.
+    43                           ; 
+    44                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    45                           ;        software without specific prior written permission.
+    46                           ; 
+    47                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    48                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    49                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    50                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    51                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    52                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    53                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    54                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    55                           ; 
+    56                           ; 
+    57                           ; Code-generator required, PIC12F675 Definitions
+    58                           ; 
+    59                           ; SFR Addresses
+    60     0004                     fsr             equ	4
+    61     0004                     fsr0            equ	4
+    62     0000                     indf            equ	0
+    63     0000                     indf0           equ	0
+    64     0002                     pc              equ	2
+    65     0002                     pcl             equ	2
+    66     000A                     pclath          equ	10
+    67     0003                     status          equ	3
+    68     0000                     INDF            equ	0	;# 
+    69     0001                     TMR0            equ	1	;# 
+    70     0002                     PCL             equ	2	;# 
+    71     0003                     STATUS          equ	3	;# 
+    72     0004                     FSR             equ	4	;# 
+    73     0005                     GPIO            equ	5	;# 
+    74     000A                     PCLATH          equ	10	;# 
+    75     000B                     INTCON          equ	11	;# 
+    76     000C                     PIR1            equ	12	;# 
+    77     000E                     TMR1            equ	14	;# 
+    78     000E                     TMR1L           equ	14	;# 
+    79     000F                     TMR1H           equ	15	;# 
+    80     0010                     T1CON           equ	16	;# 
+    81     0019                     CMCON           equ	25	;# 
+    82     001E                     ADRESH          equ	30	;# 
+    83     001F                     ADCON0          equ	31	;# 
+    84     0081                     OPTION_REG      equ	129	;# 
+    85     0085                     TRISIO          equ	133	;# 
+    86     008C                     PIE1            equ	140	;# 
+    87     008E                     PCON            equ	142	;# 
+    88     0090                     OSCCAL          equ	144	;# 
+    89     0095                     WPU             equ	149	;# 
+    90     0096                     IOC             equ	150	;# 
+    91     0096                     IOCB            equ	150	;# 
+    92     0099                     VRCON           equ	153	;# 
+    93     009A                     EEDATA          equ	154	;# 
+    94     009A                     EEDAT           equ	154	;# 
+    95     009B                     EEADR           equ	155	;# 
+    96     009C                     EECON1          equ	156	;# 
+    97     009D                     EECON2          equ	157	;# 
+    98     009E                     ADRESL          equ	158	;# 
+    99     009F                     ANSEL           equ	159	;# 
+   100     0000                     INDF            equ	0	;# 
+   101     0001                     TMR0            equ	1	;# 
+   102     0002                     PCL             equ	2	;# 
+   103     0003                     STATUS          equ	3	;# 
+   104     0004                     FSR             equ	4	;# 
+   105     0005                     GPIO            equ	5	;# 
+   106     000A                     PCLATH          equ	10	;# 
+   107     000B                     INTCON          equ	11	;# 
+   108     000C                     PIR1            equ	12	;# 
+   109     000E                     TMR1            equ	14	;# 
+   110     000E                     TMR1L           equ	14	;# 
+   111     000F                     TMR1H           equ	15	;# 
+   112     0010                     T1CON           equ	16	;# 
+   113     0019                     CMCON           equ	25	;# 
+   114     001E                     ADRESH          equ	30	;# 
+   115     001F                     ADCON0          equ	31	;# 
+   116     0081                     OPTION_REG      equ	129	;# 
+   117     0085                     TRISIO          equ	133	;# 
+   118     008C                     PIE1            equ	140	;# 
+   119     008E                     PCON            equ	142	;# 
+   120     0090                     OSCCAL          equ	144	;# 
+   121     0095                     WPU             equ	149	;# 
+   122     0096                     IOC             equ	150	;# 
+   123     0096                     IOCB            equ	150	;# 
+   124     0099                     VRCON           equ	153	;# 
+   125     009A                     EEDATA          equ	154	;# 
+   126     009A                     EEDAT           equ	154	;# 
+   127     009B                     EEADR           equ	155	;# 
+   128     009C                     EECON1          equ	156	;# 
+   129     009D                     EECON2          equ	157	;# 
+   130     009E                     ADRESL          equ	158	;# 
+   131     009F                     ANSEL           equ	159	;# 
+   132     0000                     INDF            equ	0	;# 
+   133     0001                     TMR0            equ	1	;# 
+   134     0002                     PCL             equ	2	;# 
+   135     0003                     STATUS          equ	3	;# 
+   136     0004                     FSR             equ	4	;# 
+   137     0005                     GPIO            equ	5	;# 
+   138     000A                     PCLATH          equ	10	;# 
+   139     000B                     INTCON          equ	11	;# 
+   140     000C                     PIR1            equ	12	;# 
+   141     000E                     TMR1            equ	14	;# 
+   142     000E                     TMR1L           equ	14	;# 
+   143     000F                     TMR1H           equ	15	;# 
+   144     0010                     T1CON           equ	16	;# 
+   145     0019                     CMCON           equ	25	;# 
+   146     001E                     ADRESH          equ	30	;# 
+   147     001F                     ADCON0          equ	31	;# 
+   148     0081                     OPTION_REG      equ	129	;# 
+   149     0085                     TRISIO          equ	133	;# 
+   150     008C                     PIE1            equ	140	;# 
+   151     008E                     PCON            equ	142	;# 
+   152     0090                     OSCCAL          equ	144	;# 
+   153     0095                     WPU             equ	149	;# 
+   154     0096                     IOC             equ	150	;# 
+   155     0096                     IOCB            equ	150	;# 
+   156     0099                     VRCON           equ	153	;# 
+   157     009A                     EEDATA          equ	154	;# 
+   158     009A                     EEDAT           equ	154	;# 
+   159     009B                     EEADR           equ	155	;# 
+   160     009C                     EECON1          equ	156	;# 
+   161     009D                     EECON2          equ	157	;# 
+   162     009E                     ADRESL          equ	158	;# 
+   163     009F                     ANSEL           equ	159	;# 
+   164                           
+   165                           	psect	idataBANK0
+   166     0261                     __pidataBANK0:
+   167                           
+   168                           ;initializer for main@ultimo_y
+   169     0261  34FF               	retlw	255
+   170                           
+   171                           ;initializer for main@ultimo_x
+   172     0262  34FF               	retlw	255
+   173     001E                     _ADRESH         set	30
+   174     001F                     _ADCON0         set	31
+   175     0005                     _GPIO           set	5
+   176     0019                     _CMCON          set	25
+   177     002A                     _GP2            set	42
+   178     00F9                     _GO_nDONE       set	249
+   179     002C                     _GP4            set	44
+   180     009F                     _ANSEL          set	159
+   181     0095                     _WPUbits        set	149
+   182     0081                     _OPTION_REGbits set	129
+   183     0085                     _TRISIO         set	133
+   184     0090                     _OSCCAL         set	144
+   185                           
+   186                           	psect	cinit
+   187     03F6                     start_initialization:	
+   188                           ; #config settings
+   189                           
+   190     03F6                     __initialization:
+   191                           
+   192                           ; Initialize objects allocated to BANK0
+   193     03F6  2261               	fcall	__pidataBANK0	;fetch initializer
+   194     03F7  00AF               	movwf	__pdataBANK0& (0+127)
+   195     03F8  2262               	fcall	__pidataBANK0+1	;fetch initializer
+   196     03F9  00B0               	movwf	(__pdataBANK0+1)& (0+127)
+   197                           
+   198                           ; Clear objects allocated to BANK0
+   199     03FA  01AC               	clrf	__pbssBANK0& (0+127)
+   200     03FB  01AD               	clrf	(__pbssBANK0+1)& (0+127)
+   201     03FC  01AE               	clrf	(__pbssBANK0+2)& (0+127)
+   202     03FD                     end_of_initialization:	
+   203                           ;End of C runtime variable initialization code
+   204                           
+   205     03FD                     __end_of__initialization:
+   206     03FD  0183               	clrf	3
+   207     03FE  2B81               	ljmp	_main	;jump to C main() function
+   208                           
+   209                           	psect	bssBANK0
+   210     002C                     __pbssBANK0:
+   211     002C                     _flag:
+   212     002C                     	ds	1
+   213     002D                     _valor_y:
+   214     002D                     	ds	1
+   215     002E                     _valor_x:
+   216     002E                     	ds	1
+   217                           
+   218                           	psect	dataBANK0
+   219     002F                     __pdataBANK0:
+   220     002F                     main@ultimo_y:
+   221     002F                     	ds	1
+   222     0030                     main@ultimo_x:
+   223     0030                     	ds	1
+   224                           
+   225                           	psect	cstackCOMMON
+   226     0000                     __pcstackCOMMON:
+   227     0000                     ??_adc_init:
+   228     0000                     ??_envia_pacote:	
+   229                           ; 1 bytes @ 0x0
+   230                           
+   231     0000                     ??_envia_1:	
+   232                           ; 1 bytes @ 0x0
+   233                           
+   234     0000                     ??_envia_0:	
+   235                           ; 1 bytes @ 0x0
+   236                           
+   237     0000                     ??_preambulo:	
+   238                           ; 1 bytes @ 0x0
+   239                           
+   240     0000                     ??_envia_byte:	
+   241                           ; 1 bytes @ 0x0
+   242                           
+   243     0000                     ??_checksum:	
+   244                           ; 1 bytes @ 0x0
+   245                           
+   246     0000                     ??___awdiv:	
+   247                           ; 1 bytes @ 0x0
+   248                           
+   249                           
+   250                           	psect	cstackBANK0
+   251     0020                     __pcstackBANK0:	
+   252                           ; 1 bytes @ 0x0
+   253                           
+   254     0020                     ?_adc_init:
+   255     0020                     ?_button:	
+   256                           ; 1 bytes @ 0x0
+   257                           
+   258     0020                     ?_adc_read:	
+   259                           ; 1 bytes @ 0x0
+   260                           
+   261     0020                     ?_envia_pacote:	
+   262                           ; 1 bytes @ 0x0
+   263                           
+   264     0020                     ?_main:	
+   265                           ; 1 bytes @ 0x0
+   266                           
+   267     0020                     ?_tempo:	
+   268                           ; 1 bytes @ 0x0
+   269                           
+   270     0020                     ?_envia_1:	
+   271                           ; 1 bytes @ 0x0
+   272                           
+   273     0020                     ?_envia_0:	
+   274                           ; 1 bytes @ 0x0
+   275                           
+   276     0020                     ?_start_rf:	
+   277                           ; 1 bytes @ 0x0
+   278                           
+   279     0020                     ?_preambulo:	
+   280                           ; 1 bytes @ 0x0
+   281                           
+   282     0020                     ?_envia_byte:	
+   283                           ; 1 bytes @ 0x0
+   284                           
+   285     0020                     ?_checksum:	
+   286                           ; 1 bytes @ 0x0
+   287                           
+   288     0020                     ?___awdiv:	
+   289                           ; 1 bytes @ 0x0
+   290                           
+   291     0020                     checksum@d:	
+   292                           ; 2 bytes @ 0x0
+   293                           
+   294     0020                     ___awdiv@divisor:	
+   295                           ; 1 bytes @ 0x0
+   296                           
+   297     0020                     ??_adc_read:	
+   298                           ; 2 bytes @ 0x0
+   299                           
+   300     0020                     ??_tempo:	
+   301                           ; 1 bytes @ 0x0
+   302                           
+   303     0020                     ??_start_rf:	
+   304                           ; 1 bytes @ 0x0
+   305                           
+   306                           
+   307                           ; 1 bytes @ 0x0
+   308     0020                     	ds	1
+   309     0021                     adc_read@channel:
+   310     0021                     preambulo@i:	
+   311                           ; 1 bytes @ 0x1
+   312                           
+   313     0021                     envia_byte@dado:	
+   314                           ; 1 bytes @ 0x1
+   315                           
+   316                           
+   317                           ; 1 bytes @ 0x1
+   318     0021                     	ds	1
+   319     0022                     envia_byte@i:
+   320     0022                     ___awdiv@dividend:	
+   321                           ; 1 bytes @ 0x2
+   322                           
+   323                           
+   324                           ; 2 bytes @ 0x2
+   325     0022                     	ds	1
+   326     0023                     envia_pacote@comando:
+   327                           
+   328                           ; 1 bytes @ 0x3
+   329     0023                     	ds	1
+   330     0024                     ___awdiv@counter:
+   331     0024                     ??_button:	
+   332                           ; 1 bytes @ 0x4
+   333                           
+   334                           
+   335                           ; 1 bytes @ 0x4
+   336     0024                     	ds	1
+   337     0025                     ___awdiv@sign:
+   338                           
+   339                           ; 1 bytes @ 0x5
+   340     0025                     	ds	1
+   341     0026                     button@i:
+   342     0026                     ___awdiv@quotient:	
+   343                           ; 1 bytes @ 0x6
+   344                           
+   345                           
+   346                           ; 2 bytes @ 0x6
+   347     0026                     	ds	2
+   348     0028                     ??_main:
+   349                           
+   350                           ; 1 bytes @ 0x8
+   351     0028                     	ds	2
+   352     002A                     main@pulso_x:
+   353                           
+   354                           ; 1 bytes @ 0xA
+   355     002A                     	ds	1
+   356     002B                     main@pulso_y:
+   357                           
+   358                           ; 1 bytes @ 0xB
+   359     002B                     	ds	1
+   360                           
+   361                           	psect	maintext
+   362     0381                     __pmaintext:	
+   363 ;;
+   364 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
+   365 ;;
+   366 ;; *************** function _main *****************
+   367 ;; Defined at:
+   368 ;;		line 50 in file "TX.c"
+   369 ;; Parameters:    Size  Location     Type
+   370 ;;		None
+   371 ;; Auto vars:     Size  Location     Type
+   372 ;;  pulso_y         1   11[BANK0 ] unsigned char 
+   373 ;;  pulso_x         1   10[BANK0 ] unsigned char 
+   374 ;; Return value:  Size  Location     Type
+   375 ;;                  1    wreg      void 
+   376 ;; Registers used:
+   377 ;;		wreg, status,2, status,0, pclath, cstack
+   378 ;; Tracked objects:
+   379 ;;		On entry : B00/0
+   380 ;;		On exit  : 0/0
+   381 ;;		Unchanged: 0/0
+   382 ;; Data sizes:     COMMON   BANK0
+   383 ;;      Params:         0       0
+   384 ;;      Locals:         0       2
+   385 ;;      Temps:          0       2
+   386 ;;      Totals:         0       4
+   387 ;;Total ram usage:        4 bytes
+   388 ;; Hardware stack levels required when called: 5
+   389 ;; This function calls:
+   390 ;;		___awdiv
+   391 ;;		_adc_init
+   392 ;;		_adc_read
+   393 ;;		_button
+   394 ;;		_envia_pacote
+   395 ;; This function is called by:
+   396 ;;		Startup code after reset
+   397 ;; This function uses a non-reentrant model
+   398 ;;
+   399                           
+   400     0381                     _main:	
+   401                           ;psect for function _main
+   402                           
+   403     0381                     l954:	
+   404                           ;incstack = 0
+   405                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   406                           
+   407                           
+   408                           ;TX.c: 52:     OSCCAL = *(unsigned char*)0x3FF;
+   409     0381  1683               	bsf	3,5	;RP0=1, select bank7
+   410     0382  087F               	movf	127,w
+   411     0383  0090               	movwf	16	;volatile
+   412     0384                     l956:
+   413                           
+   414                           ;TX.c: 54:     CMCON = 0x07;
+   415     0384  3007               	movlw	7
+   416     0385  1283               	bcf	3,5	;RP0=0, select bank0
+   417     0386  0099               	movwf	25	;volatile
+   418     0387                     l958:
+   419                           
+   420                           ;TX.c: 56:     TRISIO = 0b00010011;
+   421     0387  3013               	movlw	19
+   422     0388  1683               	bsf	3,5	;RP0=1, select bank1
+   423     0389  0085               	movwf	5	;volatile
+   424     038A                     l960:
+   425                           
+   426                           ;TX.c: 58:     GPIO = 0x00;
+   427     038A  1283               	bcf	3,5	;RP0=0, select bank0
+   428     038B  0185               	clrf	5	;volatile
+   429     038C                     l962:
+   430                           
+   431                           ;TX.c: 61:     OPTION_REGbits.nGPPU = 0;
+   432     038C  1683               	bsf	3,5	;RP0=1, select bank1
+   433     038D  1381               	bcf	1,7	;volatile
+   434     038E                     l964:
+   435                           
+   436                           ;TX.c: 62:     WPUbits.WPU4 = 1;
+   437     038E  1615               	bsf	21,4	;volatile
+   438     038F                     l966:
+   439                           
+   440                           ;TX.c: 64:     adc_init();
+   441     038F  2268               	fcall	_adc_init
+   442     0390                     l968:
+   443                           
+   444                           ;TX.c: 67: {;TX.c: 68:     button();
+   445     0390  22E8               	fcall	_button
+   446     0391                     l970:
+   447                           
+   448                           ;TX.c: 74:     if(flag == 0)
+   449     0391  1283               	bcf	3,5	;RP0=0, select bank0
+   450     0392  082C               	movf	_flag,w
+   451     0393  1D03               	btfss	3,2
+   452     0394  2B96               	goto	u461
+   453     0395  2B97               	goto	u460
+   454     0396                     u461:
+   455     0396  2BEA               	goto	l990
+   456     0397                     u460:
+   457     0397                     l972:
+   458                           
+   459                           ;TX.c: 75:     {;TX.c: 76:         valor_x = adc_read(0);
+   460     0397  3000               	movlw	0
+   461     0398  22CC               	fcall	_adc_read
+   462     0399  1283               	bcf	3,5	;RP0=0, select bank0
+   463     039A  00AE               	movwf	_valor_x
+   464                           
+   465                           ;TX.c: 77:         valor_y = adc_read(1);
+   466     039B  3001               	movlw	1
+   467     039C  22CC               	fcall	_adc_read
+   468     039D  1283               	bcf	3,5	;RP0=0, select bank0
+   469     039E  00AD               	movwf	_valor_y
+   470                           
+   471                           ;TX.c: 79:         uint8_t pulso_x = 10 + (valor_x / 25);
+   472     039F  3019               	movlw	25
+   473     03A0  00A0               	movwf	___awdiv@divisor
+   474     03A1  3000               	movlw	0
+   475     03A2  00A1               	movwf	___awdiv@divisor+1
+   476     03A3  082E               	movf	_valor_x,w
+   477     03A4  00A8               	movwf	??_main
+   478     03A5  01A9               	clrf	??_main+1
+   479     03A6  0828               	movf	??_main,w
+   480     03A7  00A2               	movwf	___awdiv@dividend
+   481     03A8  0829               	movf	??_main+1,w
+   482     03A9  00A3               	movwf	___awdiv@dividend+1
+   483     03AA  231D               	fcall	___awdiv
+   484     03AB  1283               	bcf	3,5	;RP0=0, select bank0
+   485     03AC  0820               	movf	?___awdiv,w
+   486     03AD  3E0A               	addlw	10
+   487     03AE  00AA               	movwf	main@pulso_x
+   488                           
+   489                           ;TX.c: 80:         uint8_t pulso_y = 10 + (valor_y / 25);
+   490     03AF  3019               	movlw	25
+   491     03B0  00A0               	movwf	___awdiv@divisor
+   492     03B1  3000               	movlw	0
+   493     03B2  00A1               	movwf	___awdiv@divisor+1
+   494     03B3  082D               	movf	_valor_y,w
+   495     03B4  00A8               	movwf	??_main
+   496     03B5  01A9               	clrf	??_main+1
+   497     03B6  0828               	movf	??_main,w
+   498     03B7  00A2               	movwf	___awdiv@dividend
+   499     03B8  0829               	movf	??_main+1,w
+   500     03B9  00A3               	movwf	___awdiv@dividend+1
+   501     03BA  231D               	fcall	___awdiv
+   502     03BB  1283               	bcf	3,5	;RP0=0, select bank0
+   503     03BC  0820               	movf	?___awdiv,w
+   504     03BD  3E0A               	addlw	10
+   505     03BE  00AB               	movwf	main@pulso_y
+   506     03BF                     l974:
+   507                           
+   508                           ;TX.c: 86:         static uint8_t ultimo_x = 255;;TX.c: 88:         if(pulso_x != ultimo
+      +                          _x)
+   509     03BF  082A               	movf	main@pulso_x,w
+   510     03C0  0630               	xorwf	main@ultimo_x,w
+   511     03C1  1903               	skipnz
+   512     03C2  2BC4               	goto	u471
+   513     03C3  2BC5               	goto	u470
+   514     03C4                     u471:
+   515     03C4  2BD4               	goto	l982
+   516     03C5                     u470:
+   517     03C5                     l976:
+   518                           
+   519                           ;TX.c: 89:         {;TX.c: 90:             ultimo_x = pulso_x;
+   520     03C5  082A               	movf	main@pulso_x,w
+   521     03C6  00B0               	movwf	main@ultimo_x
+   522     03C7                     l978:
+   523                           
+   524                           ;TX.c: 92:             envia_pacote(0x10 + pulso_x);
+   525     03C7  082A               	movf	main@pulso_x,w
+   526     03C8  3E10               	addlw	16
+   527     03C9  2284               	fcall	_envia_pacote
+   528     03CA                     l980:
+   529                           
+   530                           ;TX.c: 94:             _delay((unsigned long)((10)*(4000000/4000.0)));
+   531     03CA  300D               	movlw	13
+   532     03CB  1283               	bcf	3,5	;RP0=0, select bank0
+   533     03CC  00A9               	movwf	??_main+1
+   534     03CD  30FB               	movlw	251
+   535     03CE  00A8               	movwf	??_main
+   536     03CF                     u497:
+   537     03CF  0BA8               	decfsz	??_main,f
+   538     03D0  2BCF               	goto	u497
+   539     03D1  0BA9               	decfsz	??_main+1,f
+   540     03D2  2BCF               	goto	u497
+   541     03D3  2BD4               	nop2
+   542     03D4                     l982:
+   543                           
+   544                           ;TX.c: 101:         static uint8_t ultimo_y = 255;;TX.c: 103:         if(pulso_y != ulti
+      +                          mo_y)
+   545     03D4  1283               	bcf	3,5	;RP0=0, select bank0
+   546     03D5  082B               	movf	main@pulso_y,w
+   547     03D6  062F               	xorwf	main@ultimo_y,w
+   548     03D7  1903               	skipnz
+   549     03D8  2BDA               	goto	u481
+   550     03D9  2BDB               	goto	u480
+   551     03DA                     u481:
+   552     03DA  2BEA               	goto	l990
+   553     03DB                     u480:
+   554     03DB                     l984:
+   555                           
+   556                           ;TX.c: 104:         {;TX.c: 105:             ultimo_y = pulso_y;
+   557     03DB  082B               	movf	main@pulso_y,w
+   558     03DC  00AF               	movwf	main@ultimo_y
+   559     03DD                     l986:
+   560                           
+   561                           ;TX.c: 107:             envia_pacote(0x20 + pulso_y);
+   562     03DD  082B               	movf	main@pulso_y,w
+   563     03DE  3E20               	addlw	32
+   564     03DF  2284               	fcall	_envia_pacote
+   565     03E0                     l988:
+   566                           
+   567                           ;TX.c: 109:             _delay((unsigned long)((10)*(4000000/4000.0)));
+   568     03E0  300D               	movlw	13
+   569     03E1  1283               	bcf	3,5	;RP0=0, select bank0
+   570     03E2  00A9               	movwf	??_main+1
+   571     03E3  30FB               	movlw	251
+   572     03E4  00A8               	movwf	??_main
+   573     03E5                     u507:
+   574     03E5  0BA8               	decfsz	??_main,f
+   575     03E6  2BE5               	goto	u507
+   576     03E7  0BA9               	decfsz	??_main+1,f
+   577     03E8  2BE5               	goto	u507
+   578     03E9  2BEA               	nop2
+   579     03EA                     l990:
+   580                           
+   581                           ;TX.c: 113:     _delay((unsigned long)((20)*(4000000/4000.0)));
+   582     03EA  301A               	movlw	26
+   583     03EB  1283               	bcf	3,5	;RP0=0, select bank0
+   584     03EC  00A9               	movwf	??_main+1
+   585     03ED  30F8               	movlw	248
+   586     03EE  00A8               	movwf	??_main
+   587     03EF                     u517:
+   588     03EF  0BA8               	decfsz	??_main,f
+   589     03F0  2BEF               	goto	u517
+   590     03F1  0BA9               	decfsz	??_main+1,f
+   591     03F2  2BEF               	goto	u517
+   592     03F3  0000               	nop
+   593     03F4  2B90               	goto	l968
+   594     03F5  2800               	ljmp	start
+   595     03F6                     __end_of_main:
+   596                           
+   597                           	psect	text1
+   598     02E8                     __ptext1:	
+   599 ;; *************** function _button *****************
+   600 ;; Defined at:
+   601 ;;		line 121 in file "TX.c"
+   602 ;; Parameters:    Size  Location     Type
+   603 ;;		None
+   604 ;; Auto vars:     Size  Location     Type
+   605 ;;  i               1    6[BANK0 ] unsigned char 
+   606 ;; Return value:  Size  Location     Type
+   607 ;;                  1    wreg      void 
+   608 ;; Registers used:
+   609 ;;		wreg, status,2, status,0, pclath, cstack
+   610 ;; Tracked objects:
+   611 ;;		On entry : 0/0
+   612 ;;		On exit  : 0/0
+   613 ;;		Unchanged: 0/0
+   614 ;; Data sizes:     COMMON   BANK0
+   615 ;;      Params:         0       0
+   616 ;;      Locals:         0       1
+   617 ;;      Temps:          0       2
+   618 ;;      Totals:         0       3
+   619 ;;Total ram usage:        3 bytes
+   620 ;; Hardware stack levels used: 1
+   621 ;; Hardware stack levels required when called: 4
+   622 ;; This function calls:
+   623 ;;		_envia_pacote
+   624 ;; This function is called by:
+   625 ;;		_main
+   626 ;; This function uses a non-reentrant model
+   627 ;;
+   628                           
+   629     02E8                     _button:	
+   630                           ;psect for function _button
+   631                           
+   632     02E8                     l878:	
+   633                           ;incstack = 0
+   634                           ; Regs used in _button: [wreg+status,2+status,0+pclath+cstack]
+   635                           
+   636                           
+   637                           ;TX.c: 123:     if(GP4 == 0)
+   638     02E8  1283               	bcf	3,5	;RP0=0, select bank0
+   639     02E9  1A05               	btfsc	5,4	;volatile
+   640     02EA  2AEC               	goto	u281
+   641     02EB  2AED               	goto	u280
+   642     02EC                     u281:
+   643     02EC  2B1C               	goto	l63
+   644     02ED                     u280:
+   645     02ED                     l880:
+   646                           
+   647                           ;TX.c: 124:     {;TX.c: 125:         _delay((unsigned long)((20)*(4000000/4000.0)));
+   648     02ED  301A               	movlw	26
+   649     02EE  00A5               	movwf	??_button+1
+   650     02EF  30F8               	movlw	248
+   651     02F0  00A4               	movwf	??_button
+   652     02F1                     u527:
+   653     02F1  0BA4               	decfsz	??_button,f
+   654     02F2  2AF1               	goto	u527
+   655     02F3  0BA5               	decfsz	??_button+1,f
+   656     02F4  2AF1               	goto	u527
+   657     02F5  0000               	nop
+   658     02F6                     l882:
+   659                           
+   660                           ;TX.c: 127:         if(GP4 == 0)
+   661     02F6  1283               	bcf	3,5	;RP0=0, select bank0
+   662     02F7  1A05               	btfsc	5,4	;volatile
+   663     02F8  2AFA               	goto	u291
+   664     02F9  2AFB               	goto	u290
+   665     02FA                     u291:
+   666     02FA  2B1C               	goto	l63
+   667     02FB                     u290:
+   668     02FB                     l884:
+   669                           
+   670                           ;TX.c: 128:         {;TX.c: 130:             flag = !flag;
+   671     02FB  082C               	movf	_flag,w
+   672     02FC  1903               	btfsc	3,2
+   673     02FD  2AFF               	goto	u301
+   674     02FE  2B01               	goto	u300
+   675     02FF                     u301:
+   676     02FF  3001               	movlw	1
+   677     0300  2B02               	goto	u310
+   678     0301                     u300:
+   679     0301  3000               	movlw	0
+   680     0302                     u310:
+   681     0302  00AC               	movwf	_flag
+   682     0303                     l886:
+   683                           
+   684                           ;TX.c: 133:             for(uint8_t i = 0; i < 5; i++)
+   685     0303  01A6               	clrf	button@i
+   686     0304                     l892:
+   687                           
+   688                           ;TX.c: 134:             {;TX.c: 135:                 envia_pacote(0x06);
+   689     0304  3006               	movlw	6
+   690     0305  2284               	fcall	_envia_pacote
+   691     0306                     l894:
+   692                           
+   693                           ;TX.c: 136:                 _delay((unsigned long)((5)*(4000000/4000.0)));
+   694     0306  3007               	movlw	7
+   695     0307  1283               	bcf	3,5	;RP0=0, select bank0
+   696     0308  00A5               	movwf	??_button+1
+   697     0309  307D               	movlw	125
+   698     030A  00A4               	movwf	??_button
+   699     030B                     u537:
+   700     030B  0BA4               	decfsz	??_button,f
+   701     030C  2B0B               	goto	u537
+   702     030D  0BA5               	decfsz	??_button+1,f
+   703     030E  2B0B               	goto	u537
+   704     030F                     l896:
+   705                           
+   706                           ;TX.c: 137:             }
+   707     030F  3001               	movlw	1
+   708     0310  1283               	bcf	3,5	;RP0=0, select bank0
+   709     0311  07A6               	addwf	button@i,f
+   710     0312                     l898:
+   711     0312  3005               	movlw	5
+   712     0313  0226               	subwf	button@i,w
+   713     0314  1C03               	skipc
+   714     0315  2B17               	goto	u321
+   715     0316  2B18               	goto	u320
+   716     0317                     u321:
+   717     0317  2B04               	goto	l892
+   718     0318                     u320:
+   719     0318                     l60:
+   720     0318  1E05               	btfss	5,4	;volatile
+   721     0319  2B1B               	goto	u331
+   722     031A  2B1C               	goto	u330
+   723     031B                     u331:
+   724     031B  2B18               	goto	l60
+   725     031C                     u330:
+   726     031C                     l63:
+   727     031C  0008               	return
+   728     031D                     __end_of_button:
+   729                           
+   730                           	psect	text2
+   731     0284                     __ptext2:	
+   732 ;; *************** function _envia_pacote *****************
+   733 ;; Defined at:
+   734 ;;		line 60 in file "rf433.c"
+   735 ;; Parameters:    Size  Location     Type
+   736 ;;  comando         1    wreg     unsigned char 
+   737 ;; Auto vars:     Size  Location     Type
+   738 ;;  comando         1    3[BANK0 ] unsigned char 
+   739 ;; Return value:  Size  Location     Type
+   740 ;;                  1    wreg      void 
+   741 ;; Registers used:
+   742 ;;		wreg, status,2, status,0, pclath, cstack
+   743 ;; Tracked objects:
+   744 ;;		On entry : 0/0
+   745 ;;		On exit  : 0/0
+   746 ;;		Unchanged: 0/0
+   747 ;; Data sizes:     COMMON   BANK0
+   748 ;;      Params:         0       0
+   749 ;;      Locals:         0       1
+   750 ;;      Temps:          0       0
+   751 ;;      Totals:         0       1
+   752 ;;Total ram usage:        1 bytes
+   753 ;; Hardware stack levels used: 1
+   754 ;; This function calls:
+   755 ;;		_checksum
+   756 ;;		_envia_byte
+   757 ;;		_preambulo
+   758 ;;		_start_rf
+   759 ;; This function is called by:
+   760 ;;		_main
+   761 ;;		_button
+   762 ;; This function uses a non-reentrant model
+   763 ;;
+   764                           
+   765     0284                     _envia_pacote:	
+   766                           ;psect for function _envia_pacote
+   767                           
+   768                           
+   769                           ;incstack = 0
+   770                           ; Regs used in _envia_pacote: [wreg+status,2+status,0+pclath+cstack]
+   771                           ;envia_pacote@comando stored from wreg
+   772     0284  1283               	bcf	3,5	;RP0=0, select bank0
+   773     0285  00A3               	movwf	envia_pacote@comando
+   774     0286                     l874:
+   775                           
+   776                           ;rf433.c: 61:     preambulo();
+   777     0286  2294               	fcall	_preambulo
+   778                           
+   779                           ;rf433.c: 62:     start_rf();
+   780     0287  22A5               	fcall	_start_rf
+   781                           
+   782                           ;rf433.c: 64:     envia_byte(0x55);
+   783     0288  3055               	movlw	85
+   784     0289  22B6               	fcall	_envia_byte
+   785                           
+   786                           ;rf433.c: 65:     envia_byte(comando);
+   787     028A  1283               	bcf	3,5	;RP0=0, select bank0
+   788     028B  0823               	movf	envia_pacote@comando,w
+   789     028C  22B6               	fcall	_envia_byte
+   790                           
+   791                           ;rf433.c: 66:     envia_byte(checksum(comando));
+   792     028D  1283               	bcf	3,5	;RP0=0, select bank0
+   793     028E  0823               	movf	envia_pacote@comando,w
+   794     028F  2263               	fcall	_checksum
+   795     0290  22B6               	fcall	_envia_byte
+   796     0291                     l876:
+   797                           
+   798                           ;rf433.c: 68:     GP2 = 0;
+   799     0291  1283               	bcf	3,5	;RP0=0, select bank0
+   800     0292  1105               	bcf	5,2	;volatile
+   801     0293                     l106:
+   802     0293  0008               	return
+   803     0294                     __end_of_envia_pacote:
+   804                           
+   805                           	psect	text3
+   806     02A5                     __ptext3:	
+   807 ;; *************** function _start_rf *****************
+   808 ;; Defined at:
+   809 ;;		line 26 in file "rf433.c"
+   810 ;; Parameters:    Size  Location     Type
+   811 ;;		None
+   812 ;; Auto vars:     Size  Location     Type
+   813 ;;		None
+   814 ;; Return value:  Size  Location     Type
+   815 ;;                  1    wreg      void 
+   816 ;; Registers used:
+   817 ;;		wreg
+   818 ;; Tracked objects:
+   819 ;;		On entry : 0/0
+   820 ;;		On exit  : 0/0
+   821 ;;		Unchanged: 0/0
+   822 ;; Data sizes:     COMMON   BANK0
+   823 ;;      Params:         0       0
+   824 ;;      Locals:         0       0
+   825 ;;      Temps:          0       1
+   826 ;;      Totals:         0       1
+   827 ;;Total ram usage:        1 bytes
+   828 ;; Hardware stack levels used: 1
+   829 ;; This function calls:
+   830 ;;		Nothing
+   831 ;; This function is called by:
+   832 ;;		_envia_pacote
+   833 ;; This function uses a non-reentrant model
+   834 ;;
+   835                           
+   836     02A5                     _start_rf:	
+   837                           ;psect for function _start_rf
+   838                           
+   839     02A5                     l838:	
+   840                           ;incstack = 0
+   841                           ; Regs used in _start_rf: [wreg]
+   842                           
+   843                           
+   844                           ;rf433.c: 27:     GP2 = 1;
+   845     02A5  1283               	bcf	3,5	;RP0=0, select bank0
+   846     02A6  1505               	bsf	5,2	;volatile
+   847     02A7                     l840:
+   848                           
+   849                           ;rf433.c: 28:     _delay((unsigned long)((800)*(4000000/4000000.0)));
+   850     02A7  309F               	movlw	159
+   851     02A8  00A0               	movwf	??_start_rf
+   852     02A9                     u547:
+   853     02A9  2AAA               	nop2
+   854     02AA  0BA0               	decfsz	??_start_rf,f
+   855     02AB  2AA9               	goto	u547
+   856     02AC  2AAD               	nop2
+   857     02AD  2AAE               	nop2
+   858     02AE                     l842:
+   859                           
+   860                           ;rf433.c: 29:     GP2 = 0;
+   861     02AE  1283               	bcf	3,5	;RP0=0, select bank0
+   862     02AF  1105               	bcf	5,2	;volatile
+   863                           
+   864                           ;rf433.c: 30:     _delay((unsigned long)((200)*(4000000/4000000.0)));
+   865     02B0  3042               	movlw	66
+   866     02B1  00A0               	movwf	??_start_rf
+   867     02B2                     u557:
+   868     02B2  0BA0               	decfsz	??_start_rf,f
+   869     02B3  2AB2               	goto	u557
+   870     02B4  0000               	nop
+   871     02B5                     l88:
+   872     02B5  0008               	return
+   873     02B6                     __end_of_start_rf:
+   874                           
+   875                           	psect	text4
+   876     0294                     __ptext4:	
+   877 ;; *************** function _preambulo *****************
+   878 ;; Defined at:
+   879 ;;		line 33 in file "rf433.c"
+   880 ;; Parameters:    Size  Location     Type
+   881 ;;		None
+   882 ;; Auto vars:     Size  Location     Type
+   883 ;;  i               1    1[BANK0 ] unsigned char 
+   884 ;; Return value:  Size  Location     Type
+   885 ;;                  1    wreg      void 
+   886 ;; Registers used:
+   887 ;;		wreg, status,2, status,0, pclath, cstack
+   888 ;; Tracked objects:
+   889 ;;		On entry : 0/0
+   890 ;;		On exit  : 0/0
+   891 ;;		Unchanged: 0/0
+   892 ;; Data sizes:     COMMON   BANK0
+   893 ;;      Params:         0       0
+   894 ;;      Locals:         0       1
+   895 ;;      Temps:          0       0
+   896 ;;      Totals:         0       1
+   897 ;;Total ram usage:        1 bytes
+   898 ;; Hardware stack levels used: 1
+   899 ;; Hardware stack levels required when called: 1
+   900 ;; This function calls:
+   901 ;;		_tempo
+   902 ;; This function is called by:
+   903 ;;		_envia_pacote
+   904 ;; This function uses a non-reentrant model
+   905 ;;
+   906                           
+   907     0294                     _preambulo:	
+   908                           ;psect for function _preambulo
+   909                           
+   910     0294                     l844:	
+   911                           ;incstack = 0
+   912                           ; Regs used in _preambulo: [wreg+status,2+status,0+pclath+cstack]
+   913                           
+   914                           
+   915                           ;rf433.c: 34:     for(uint8_t i = 0; i < 20; i++) {
+   916     0294  1283               	bcf	3,5	;RP0=0, select bank0
+   917     0295  01A1               	clrf	preambulo@i
+   918     0296                     l91:
+   919                           
+   920                           ;rf433.c: 35:         GP2 = 1;
+   921     0296  1505               	bsf	5,2	;volatile
+   922     0297                     l850:
+   923                           
+   924                           ;rf433.c: 36:         tempo();
+   925     0297  226F               	fcall	_tempo
+   926     0298                     l852:
+   927                           
+   928                           ;rf433.c: 37:         GP2 = 0;
+   929     0298  1283               	bcf	3,5	;RP0=0, select bank0
+   930     0299  1105               	bcf	5,2	;volatile
+   931                           
+   932                           ;rf433.c: 38:         tempo();
+   933     029A  226F               	fcall	_tempo
+   934     029B                     l854:
+   935                           
+   936                           ;rf433.c: 39:     }
+   937     029B  3001               	movlw	1
+   938     029C  1283               	bcf	3,5	;RP0=0, select bank0
+   939     029D  07A1               	addwf	preambulo@i,f
+   940     029E                     l856:
+   941     029E  3014               	movlw	20
+   942     029F  0221               	subwf	preambulo@i,w
+   943     02A0  1C03               	skipc
+   944     02A1  2AA3               	goto	u251
+   945     02A2  2AA4               	goto	u250
+   946     02A3                     u251:
+   947     02A3  2A96               	goto	l91
+   948     02A4                     u250:
+   949     02A4                     l93:
+   950     02A4  0008               	return
+   951     02A5                     __end_of_preambulo:
+   952                           
+   953                           	psect	text5
+   954     02B6                     __ptext5:	
+   955 ;; *************** function _envia_byte *****************
+   956 ;; Defined at:
+   957 ;;		line 42 in file "rf433.c"
+   958 ;; Parameters:    Size  Location     Type
+   959 ;;  dado            1    wreg     unsigned char 
+   960 ;; Auto vars:     Size  Location     Type
+   961 ;;  dado            1    1[BANK0 ] unsigned char 
+   962 ;;  i               1    2[BANK0 ] unsigned char 
+   963 ;; Return value:  Size  Location     Type
+   964 ;;                  1    wreg      void 
+   965 ;; Registers used:
+   966 ;;		wreg, status,2, status,0, pclath, cstack
+   967 ;; Tracked objects:
+   968 ;;		On entry : 0/0
+   969 ;;		On exit  : 0/0
+   970 ;;		Unchanged: 0/0
+   971 ;; Data sizes:     COMMON   BANK0
+   972 ;;      Params:         0       0
+   973 ;;      Locals:         0       2
+   974 ;;      Temps:          0       0
+   975 ;;      Totals:         0       2
+   976 ;;Total ram usage:        2 bytes
+   977 ;; Hardware stack levels used: 1
+   978 ;; Hardware stack levels required when called: 2
+   979 ;; This function calls:
+   980 ;;		_envia_0
+   981 ;;		_envia_1
+   982 ;; This function is called by:
+   983 ;;		_envia_pacote
+   984 ;; This function uses a non-reentrant model
+   985 ;;
+   986                           
+   987     02B6                     _envia_byte:	
+   988                           ;psect for function _envia_byte
+   989                           
+   990                           
+   991                           ;incstack = 0
+   992                           ; Regs used in _envia_byte: [wreg+status,2+status,0+pclath+cstack]
+   993                           ;envia_byte@dado stored from wreg
+   994     02B6  1283               	bcf	3,5	;RP0=0, select bank0
+   995     02B7  00A1               	movwf	envia_byte@dado
+   996     02B8                     l858:
+   997                           
+   998                           ;rf433.c: 43:     for(uint8_t i = 0; i < 8; i++) {
+   999     02B8  01A2               	clrf	envia_byte@i
+  1000     02B9                     l96:
+  1001                           
+  1002                           ;rf433.c: 44:         if(dado & 0x01)
+  1003     02B9  1C21               	btfss	envia_byte@dado,0
+  1004     02BA  2ABC               	goto	u261
+  1005     02BB  2ABD               	goto	u260
+  1006     02BC                     u261:
+  1007     02BC  2ABF               	goto	l866
+  1008     02BD                     u260:
+  1009     02BD                     l864:
+  1010                           
+  1011                           ;rf433.c: 45:             envia_1();
+  1012     02BD  227D               	fcall	_envia_1
+  1013     02BE  2AC0               	goto	l868
+  1014     02BF                     l866:
+  1015                           
+  1016                           ;rf433.c: 47:             envia_0();
+  1017     02BF  2276               	fcall	_envia_0
+  1018     02C0                     l868:
+  1019                           
+  1020                           ;rf433.c: 49:         dado >>= 1;
+  1021     02C0  1003               	clrc
+  1022     02C1  1283               	bcf	3,5	;RP0=0, select bank0
+  1023     02C2  0CA1               	rrf	envia_byte@dado,f
+  1024     02C3                     l870:
+  1025                           
+  1026                           ;rf433.c: 50:     }
+  1027     02C3  3001               	movlw	1
+  1028     02C4  07A2               	addwf	envia_byte@i,f
+  1029     02C5                     l872:
+  1030     02C5  3008               	movlw	8
+  1031     02C6  0222               	subwf	envia_byte@i,w
+  1032     02C7  1C03               	skipc
+  1033     02C8  2ACA               	goto	u271
+  1034     02C9  2ACB               	goto	u270
+  1035     02CA                     u271:
+  1036     02CA  2AB9               	goto	l96
+  1037     02CB                     u270:
+  1038     02CB                     l100:
+  1039     02CB  0008               	return
+  1040     02CC                     __end_of_envia_byte:
+  1041                           
+  1042                           	psect	text6
+  1043     027D                     __ptext6:	
+  1044 ;; *************** function _envia_1 *****************
+  1045 ;; Defined at:
+  1046 ;;		line 12 in file "rf433.c"
+  1047 ;; Parameters:    Size  Location     Type
+  1048 ;;		None
+  1049 ;; Auto vars:     Size  Location     Type
+  1050 ;;		None
+  1051 ;; Return value:  Size  Location     Type
+  1052 ;;                  1    wreg      void 
+  1053 ;; Registers used:
+  1054 ;;		wreg, status,2, status,0, pclath, cstack
+  1055 ;; Tracked objects:
+  1056 ;;		On entry : 0/0
+  1057 ;;		On exit  : 0/0
+  1058 ;;		Unchanged: 0/0
+  1059 ;; Data sizes:     COMMON   BANK0
+  1060 ;;      Params:         0       0
+  1061 ;;      Locals:         0       0
+  1062 ;;      Temps:          0       0
+  1063 ;;      Totals:         0       0
+  1064 ;;Total ram usage:        0 bytes
+  1065 ;; Hardware stack levels used: 1
+  1066 ;; Hardware stack levels required when called: 1
+  1067 ;; This function calls:
+  1068 ;;		_tempo
+  1069 ;; This function is called by:
+  1070 ;;		_envia_byte
+  1071 ;; This function uses a non-reentrant model
+  1072 ;;
+  1073                           
+  1074     027D                     _envia_1:	
+  1075                           ;psect for function _envia_1
+  1076                           
+  1077     027D                     l826:	
+  1078                           ;incstack = 0
+  1079                           ; Regs used in _envia_1: [wreg+status,2+status,0+pclath+cstack]
+  1080                           
+  1081                           
+  1082                           ;rf433.c: 13:     GP2 = 1;
+  1083     027D  1283               	bcf	3,5	;RP0=0, select bank0
+  1084     027E  1505               	bsf	5,2	;volatile
+  1085     027F                     l828:
+  1086                           
+  1087                           ;rf433.c: 14:     tempo();
+  1088     027F  226F               	fcall	_tempo
+  1089     0280                     l830:
+  1090                           
+  1091                           ;rf433.c: 15:     GP2 = 0;
+  1092     0280  1283               	bcf	3,5	;RP0=0, select bank0
+  1093     0281  1105               	bcf	5,2	;volatile
+  1094                           
+  1095                           ;rf433.c: 16:     tempo();
+  1096     0282  226F               	fcall	_tempo
+  1097     0283                     l82:
+  1098     0283  0008               	return
+  1099     0284                     __end_of_envia_1:
+  1100                           
+  1101                           	psect	text7
+  1102     0276                     __ptext7:	
+  1103 ;; *************** function _envia_0 *****************
+  1104 ;; Defined at:
+  1105 ;;		line 19 in file "rf433.c"
+  1106 ;; Parameters:    Size  Location     Type
+  1107 ;;		None
+  1108 ;; Auto vars:     Size  Location     Type
+  1109 ;;		None
+  1110 ;; Return value:  Size  Location     Type
+  1111 ;;                  1    wreg      void 
+  1112 ;; Registers used:
+  1113 ;;		wreg, status,2, status,0, pclath, cstack
+  1114 ;; Tracked objects:
+  1115 ;;		On entry : 0/0
+  1116 ;;		On exit  : 0/0
+  1117 ;;		Unchanged: 0/0
+  1118 ;; Data sizes:     COMMON   BANK0
+  1119 ;;      Params:         0       0
+  1120 ;;      Locals:         0       0
+  1121 ;;      Temps:          0       0
+  1122 ;;      Totals:         0       0
+  1123 ;;Total ram usage:        0 bytes
+  1124 ;; Hardware stack levels used: 1
+  1125 ;; Hardware stack levels required when called: 1
+  1126 ;; This function calls:
+  1127 ;;		_tempo
+  1128 ;; This function is called by:
+  1129 ;;		_envia_byte
+  1130 ;; This function uses a non-reentrant model
+  1131 ;;
+  1132                           
+  1133     0276                     _envia_0:	
+  1134                           ;psect for function _envia_0
+  1135                           
+  1136     0276                     l832:	
+  1137                           ;incstack = 0
+  1138                           ; Regs used in _envia_0: [wreg+status,2+status,0+pclath+cstack]
+  1139                           
+  1140                           
+  1141                           ;rf433.c: 20:     GP2 = 0;
+  1142     0276  1283               	bcf	3,5	;RP0=0, select bank0
+  1143     0277  1105               	bcf	5,2	;volatile
+  1144     0278                     l834:
+  1145                           
+  1146                           ;rf433.c: 21:     tempo();
+  1147     0278  226F               	fcall	_tempo
+  1148     0279                     l836:
+  1149                           
+  1150                           ;rf433.c: 22:     GP2 = 1;
+  1151     0279  1283               	bcf	3,5	;RP0=0, select bank0
+  1152     027A  1505               	bsf	5,2	;volatile
+  1153                           
+  1154                           ;rf433.c: 23:     tempo();
+  1155     027B  226F               	fcall	_tempo
+  1156     027C                     l85:
+  1157     027C  0008               	return
+  1158     027D                     __end_of_envia_0:
+  1159                           
+  1160                           	psect	text8
+  1161     026F                     __ptext8:	
+  1162 ;; *************** function _tempo *****************
+  1163 ;; Defined at:
+  1164 ;;		line 8 in file "rf433.c"
+  1165 ;; Parameters:    Size  Location     Type
+  1166 ;;		None
+  1167 ;; Auto vars:     Size  Location     Type
+  1168 ;;		None
+  1169 ;; Return value:  Size  Location     Type
+  1170 ;;                  1    wreg      void 
+  1171 ;; Registers used:
+  1172 ;;		wreg
+  1173 ;; Tracked objects:
+  1174 ;;		On entry : 0/0
+  1175 ;;		On exit  : 0/0
+  1176 ;;		Unchanged: 0/0
+  1177 ;; Data sizes:     COMMON   BANK0
+  1178 ;;      Params:         0       0
+  1179 ;;      Locals:         0       0
+  1180 ;;      Temps:          0       1
+  1181 ;;      Totals:         0       1
+  1182 ;;Total ram usage:        1 bytes
+  1183 ;; Hardware stack levels used: 1
+  1184 ;; This function calls:
+  1185 ;;		Nothing
+  1186 ;; This function is called by:
+  1187 ;;		_envia_1
+  1188 ;;		_envia_0
+  1189 ;;		_preambulo
+  1190 ;; This function uses a non-reentrant model
+  1191 ;;
+  1192                           
+  1193     026F                     _tempo:	
+  1194                           ;psect for function _tempo
+  1195                           
+  1196     026F                     l824:	
+  1197                           ;incstack = 0
+  1198                           ; Regs used in _tempo: [wreg]
+  1199                           
+  1200                           
+  1201                           ;rf433.c: 9:     _delay((unsigned long)((200)*(4000000/4000000.0)));
+  1202     026F  3042               	movlw	66
+  1203     0270  1283               	bcf	3,5	;RP0=0, select bank0
+  1204     0271  00A0               	movwf	??_tempo
+  1205     0272                     u567:
+  1206     0272  0BA0               	decfsz	??_tempo,f
+  1207     0273  2A72               	goto	u567
+  1208     0274  0000               	nop
+  1209     0275                     l79:
+  1210     0275  0008               	return
+  1211     0276                     __end_of_tempo:
+  1212                           
+  1213                           	psect	text9
+  1214     0263                     __ptext9:	
+  1215 ;; *************** function _checksum *****************
+  1216 ;; Defined at:
+  1217 ;;		line 53 in file "rf433.c"
+  1218 ;; Parameters:    Size  Location     Type
+  1219 ;;  d               1    wreg     unsigned char 
+  1220 ;; Auto vars:     Size  Location     Type
+  1221 ;;  d               1    0[BANK0 ] unsigned char 
+  1222 ;; Return value:  Size  Location     Type
+  1223 ;;                  1    wreg      unsigned char 
+  1224 ;; Registers used:
+  1225 ;;		wreg, status,2
+  1226 ;; Tracked objects:
+  1227 ;;		On entry : 0/0
+  1228 ;;		On exit  : 0/0
+  1229 ;;		Unchanged: 0/0
+  1230 ;; Data sizes:     COMMON   BANK0
+  1231 ;;      Params:         0       0
+  1232 ;;      Locals:         0       1
+  1233 ;;      Temps:          0       0
+  1234 ;;      Totals:         0       1
+  1235 ;;Total ram usage:        1 bytes
+  1236 ;; Hardware stack levels used: 1
+  1237 ;; This function calls:
+  1238 ;;		Nothing
+  1239 ;; This function is called by:
+  1240 ;;		_envia_pacote
+  1241 ;; This function uses a non-reentrant model
+  1242 ;;
+  1243                           
+  1244     0263                     _checksum:	
+  1245                           ;psect for function _checksum
+  1246                           
+  1247                           
+  1248                           ;incstack = 0
+  1249                           ; Regs used in _checksum: [wreg+status,2]
+  1250                           ;checksum@d stored from wreg
+  1251     0263  1283               	bcf	3,5	;RP0=0, select bank0
+  1252     0264  00A0               	movwf	checksum@d
+  1253     0265                     l700:
+  1254                           
+  1255                           ;rf433.c: 54:     return d ^ 0xAA;
+  1256     0265  0820               	movf	checksum@d,w
+  1257     0266  3AAA               	xorlw	170
+  1258     0267                     l103:
+  1259     0267  0008               	return
+  1260     0268                     __end_of_checksum:
+  1261                           
+  1262                           	psect	text10
+  1263     02CC                     __ptext10:	
+  1264 ;; *************** function _adc_read *****************
+  1265 ;; Defined at:
+  1266 ;;		line 160 in file "TX.c"
+  1267 ;; Parameters:    Size  Location     Type
+  1268 ;;  channel         1    wreg     unsigned char 
+  1269 ;; Auto vars:     Size  Location     Type
+  1270 ;;  channel         1    1[BANK0 ] unsigned char 
+  1271 ;; Return value:  Size  Location     Type
+  1272 ;;                  1    wreg      unsigned char 
+  1273 ;; Registers used:
+  1274 ;;		wreg, status,2, status,0
+  1275 ;; Tracked objects:
+  1276 ;;		On entry : 0/0
+  1277 ;;		On exit  : 0/0
+  1278 ;;		Unchanged: 0/0
+  1279 ;; Data sizes:     COMMON   BANK0
+  1280 ;;      Params:         0       0
+  1281 ;;      Locals:         0       1
+  1282 ;;      Temps:          0       1
+  1283 ;;      Totals:         0       2
+  1284 ;;Total ram usage:        2 bytes
+  1285 ;; Hardware stack levels used: 1
+  1286 ;; This function calls:
+  1287 ;;		Nothing
+  1288 ;; This function is called by:
+  1289 ;;		_main
+  1290 ;; This function uses a non-reentrant model
+  1291 ;;
+  1292                           
+  1293     02CC                     _adc_read:	
+  1294                           ;psect for function _adc_read
+  1295                           
+  1296                           
+  1297                           ;incstack = 0
+  1298                           ; Regs used in _adc_read: [wreg+status,2+status,0]
+  1299                           ;adc_read@channel stored from wreg
+  1300     02CC  1283               	bcf	3,5	;RP0=0, select bank0
+  1301     02CD  00A1               	movwf	adc_read@channel
+  1302     02CE                     l900:
+  1303                           
+  1304                           ;TX.c: 160: uint8_t adc_read(uint8_t channel);TX.c: 161: {;TX.c: 162:     ADCON0 &= 0b11
+      +                          110011;
+  1305     02CE  30F3               	movlw	243
+  1306     02CF  059F               	andwf	31,f	;volatile
+  1307                           
+  1308                           ;TX.c: 164:     ADCON0 |= (channel << 2);
+  1309     02D0  0821               	movf	adc_read@channel,w	;volatile
+  1310     02D1  00A0               	movwf	??_adc_read
+  1311     02D2  3001               	movlw	1
+  1312     02D3                     u345:
+  1313     02D3  1003               	clrc
+  1314     02D4  0DA0               	rlf	??_adc_read,f
+  1315     02D5  3EFF               	addlw	-1
+  1316     02D6  1D03               	skipz
+  1317     02D7  2AD3               	goto	u345
+  1318     02D8  1003               	clrc
+  1319     02D9  0D20               	rlf	??_adc_read,w
+  1320     02DA  049F               	iorwf	31,f	;volatile
+  1321     02DB                     l902:
+  1322                           
+  1323                           ;TX.c: 166:     _delay((unsigned long)((20)*(4000000/4000000.0)));
+  1324     02DB  3006               	movlw	6
+  1325     02DC  00A0               	movwf	??_adc_read
+  1326     02DD                     u577:
+  1327     02DD  0BA0               	decfsz	??_adc_read,f
+  1328     02DE  2ADD               	goto	u577
+  1329     02DF  0000               	nop
+  1330     02E0                     l904:
+  1331                           
+  1332                           ;TX.c: 168:     GO_nDONE = 1;
+  1333     02E0  1283               	bcf	3,5	;RP0=0, select bank0
+  1334     02E1  149F               	bsf	31,1	;volatile
+  1335     02E2                     l69:	
+  1336                           ;TX.c: 170:     while(GO_nDONE);
+  1337                           
+  1338     02E2  189F               	btfsc	31,1	;volatile
+  1339     02E3  2AE5               	goto	u351
+  1340     02E4  2AE6               	goto	u350
+  1341     02E5                     u351:
+  1342     02E5  2AE2               	goto	l69
+  1343     02E6                     u350:
+  1344     02E6                     l906:
+  1345                           
+  1346                           ;TX.c: 172:     return ADRESH;
+  1347     02E6  081E               	movf	30,w	;volatile
+  1348     02E7                     l72:
+  1349     02E7  0008               	return
+  1350     02E8                     __end_of_adc_read:
+  1351                           
+  1352                           	psect	text11
+  1353     0268                     __ptext11:	
+  1354 ;; *************** function _adc_init *****************
+  1355 ;; Defined at:
+  1356 ;;		line 149 in file "TX.c"
+  1357 ;; Parameters:    Size  Location     Type
+  1358 ;;		None
+  1359 ;; Auto vars:     Size  Location     Type
+  1360 ;;		None
+  1361 ;; Return value:  Size  Location     Type
+  1362 ;;                  1    wreg      void 
+  1363 ;; Registers used:
+  1364 ;;		None
+  1365 ;; Tracked objects:
+  1366 ;;		On entry : 0/0
+  1367 ;;		On exit  : 0/0
+  1368 ;;		Unchanged: 0/0
+  1369 ;; Data sizes:     COMMON   BANK0
+  1370 ;;      Params:         0       0
+  1371 ;;      Locals:         0       0
+  1372 ;;      Temps:          0       0
+  1373 ;;      Totals:         0       0
+  1374 ;;Total ram usage:        0 bytes
+  1375 ;; Hardware stack levels used: 1
+  1376 ;; This function calls:
+  1377 ;;		Nothing
+  1378 ;; This function is called by:
+  1379 ;;		_main
+  1380 ;; This function uses a non-reentrant model
+  1381 ;;
+  1382                           
+  1383     0268                     _adc_init:	
+  1384                           ;psect for function _adc_init
+  1385                           
+  1386     0268                     l708:	
+  1387                           ;incstack = 0
+  1388                           ; Regs used in _adc_init: []
+  1389                           
+  1390                           
+  1391                           ;TX.c: 151:     ANSEL = 0b00010011;
+  1392     0268  3013               	movlw	19
+  1393     0269  1683               	bsf	3,5	;RP0=1, select bank1
+  1394     026A  009F               	movwf	31	;volatile
+  1395                           
+  1396                           ;TX.c: 153:     ADCON0 = 0b00000001;
+  1397     026B  3001               	movlw	1
+  1398     026C  1283               	bcf	3,5	;RP0=0, select bank0
+  1399     026D  009F               	movwf	31	;volatile
+  1400     026E                     l66:
+  1401     026E  0008               	return
+  1402     026F                     __end_of_adc_init:
+  1403                           
+  1404                           	psect	text12
+  1405     031D                     __ptext12:	
+  1406 ;; *************** function ___awdiv *****************
+  1407 ;; Defined at:
+  1408 ;;		line 5 in file "C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c"
+  1409 ;; Parameters:    Size  Location     Type
+  1410 ;;  divisor         2    0[BANK0 ] int 
+  1411 ;;  dividend        2    2[BANK0 ] int 
+  1412 ;; Auto vars:     Size  Location     Type
+  1413 ;;  quotient        2    6[BANK0 ] int 
+  1414 ;;  sign            1    5[BANK0 ] unsigned char 
+  1415 ;;  counter         1    4[BANK0 ] unsigned char 
+  1416 ;; Return value:  Size  Location     Type
+  1417 ;;                  2    0[BANK0 ] int 
+  1418 ;; Registers used:
+  1419 ;;		wreg, status,2, status,0
+  1420 ;; Tracked objects:
+  1421 ;;		On entry : 0/0
+  1422 ;;		On exit  : 0/0
+  1423 ;;		Unchanged: 0/0
+  1424 ;; Data sizes:     COMMON   BANK0
+  1425 ;;      Params:         0       4
+  1426 ;;      Locals:         0       4
+  1427 ;;      Temps:          0       0
+  1428 ;;      Totals:         0       8
+  1429 ;;Total ram usage:        8 bytes
+  1430 ;; Hardware stack levels used: 1
+  1431 ;; This function calls:
+  1432 ;;		Nothing
+  1433 ;; This function is called by:
+  1434 ;;		_main
+  1435 ;; This function uses a non-reentrant model
+  1436 ;;
+  1437                           
+  1438     031D                     ___awdiv:	
+  1439                           ;psect for function ___awdiv
+  1440                           
+  1441     031D                     l910:	
+  1442                           ;incstack = 0
+  1443                           ; Regs used in ___awdiv: [wreg+status,2+status,0]
+  1444                           
+  1445     031D  1283               	bcf	3,5	;RP0=0, select bank0
+  1446     031E  01A5               	clrf	___awdiv@sign
+  1447     031F                     l912:
+  1448     031F  1FA1               	btfss	___awdiv@divisor+1,7
+  1449     0320  2B22               	goto	u361
+  1450     0321  2B23               	goto	u360
+  1451     0322                     u361:
+  1452     0322  2B2A               	goto	l918
+  1453     0323                     u360:
+  1454     0323                     l914:
+  1455     0323  09A0               	comf	___awdiv@divisor,f
+  1456     0324  09A1               	comf	___awdiv@divisor+1,f
+  1457     0325  0AA0               	incf	___awdiv@divisor,f
+  1458     0326  1903               	skipnz
+  1459     0327  0AA1               	incf	___awdiv@divisor+1,f
+  1460     0328                     l916:
+  1461     0328  3001               	movlw	1
+  1462     0329  00A5               	movwf	___awdiv@sign
+  1463     032A                     l918:
+  1464     032A  1FA3               	btfss	___awdiv@dividend+1,7
+  1465     032B  2B2D               	goto	u371
+  1466     032C  2B2E               	goto	u370
+  1467     032D                     u371:
+  1468     032D  2B35               	goto	l924
+  1469     032E                     u370:
+  1470     032E                     l920:
+  1471     032E  09A2               	comf	___awdiv@dividend,f
+  1472     032F  09A3               	comf	___awdiv@dividend+1,f
+  1473     0330  0AA2               	incf	___awdiv@dividend,f
+  1474     0331  1903               	skipnz
+  1475     0332  0AA3               	incf	___awdiv@dividend+1,f
+  1476     0333                     l922:
+  1477     0333  3001               	movlw	1
+  1478     0334  06A5               	xorwf	___awdiv@sign,f
+  1479     0335                     l924:
+  1480     0335  01A6               	clrf	___awdiv@quotient
+  1481     0336  01A7               	clrf	___awdiv@quotient+1
+  1482     0337                     l926:
+  1483     0337  0820               	movf	___awdiv@divisor,w
+  1484     0338  0421               	iorwf	___awdiv@divisor+1,w
+  1485     0339  1903               	btfsc	3,2
+  1486     033A  2B3C               	goto	u381
+  1487     033B  2B3D               	goto	u380
+  1488     033C                     u381:
+  1489     033C  2B72               	goto	l946
+  1490     033D                     u380:
+  1491     033D                     l928:
+  1492     033D  3001               	movlw	1
+  1493     033E  00A4               	movwf	___awdiv@counter
+  1494     033F  2B49               	goto	l934
+  1495     0340                     l930:
+  1496     0340  3001               	movlw	1
+  1497     0341                     u395:
+  1498     0341  1003               	clrc
+  1499     0342  0DA0               	rlf	___awdiv@divisor,f
+  1500     0343  0DA1               	rlf	___awdiv@divisor+1,f
+  1501     0344  3EFF               	addlw	-1
+  1502     0345  1D03               	skipz
+  1503     0346  2B41               	goto	u395
+  1504     0347                     l932:
+  1505     0347  3001               	movlw	1
+  1506     0348  07A4               	addwf	___awdiv@counter,f
+  1507     0349                     l934:
+  1508     0349  1FA1               	btfss	___awdiv@divisor+1,7
+  1509     034A  2B4C               	goto	u401
+  1510     034B  2B4D               	goto	u400
+  1511     034C                     u401:
+  1512     034C  2B40               	goto	l930
+  1513     034D                     u400:
+  1514     034D                     l936:
+  1515     034D  3001               	movlw	1
+  1516     034E                     u415:
+  1517     034E  1003               	clrc
+  1518     034F  0DA6               	rlf	___awdiv@quotient,f
+  1519     0350  0DA7               	rlf	___awdiv@quotient+1,f
+  1520     0351  3EFF               	addlw	-1
+  1521     0352  1D03               	skipz
+  1522     0353  2B4E               	goto	u415
+  1523     0354  0821               	movf	___awdiv@divisor+1,w
+  1524     0355  0223               	subwf	___awdiv@dividend+1,w
+  1525     0356  1D03               	skipz
+  1526     0357  2B5A               	goto	u425
+  1527     0358  0820               	movf	___awdiv@divisor,w
+  1528     0359  0222               	subwf	___awdiv@dividend,w
+  1529     035A                     u425:
+  1530     035A  1C03               	skipc
+  1531     035B  2B5D               	goto	u421
+  1532     035C  2B5E               	goto	u420
+  1533     035D                     u421:
+  1534     035D  2B65               	goto	l942
+  1535     035E                     u420:
+  1536     035E                     l938:
+  1537     035E  0820               	movf	___awdiv@divisor,w
+  1538     035F  02A2               	subwf	___awdiv@dividend,f
+  1539     0360  0821               	movf	___awdiv@divisor+1,w
+  1540     0361  1C03               	skipc
+  1541     0362  03A3               	decf	___awdiv@dividend+1,f
+  1542     0363  02A3               	subwf	___awdiv@dividend+1,f
+  1543     0364                     l940:
+  1544     0364  1426               	bsf	___awdiv@quotient,0
+  1545     0365                     l942:
+  1546     0365  3001               	movlw	1
+  1547     0366                     u435:
+  1548     0366  1003               	clrc
+  1549     0367  0CA1               	rrf	___awdiv@divisor+1,f
+  1550     0368  0CA0               	rrf	___awdiv@divisor,f
+  1551     0369  3EFF               	addlw	-1
+  1552     036A  1D03               	skipz
+  1553     036B  2B66               	goto	u435
+  1554     036C                     l944:
+  1555     036C  3001               	movlw	1
+  1556     036D  02A4               	subwf	___awdiv@counter,f
+  1557     036E  1D03               	btfss	3,2
+  1558     036F  2B71               	goto	u441
+  1559     0370  2B72               	goto	u440
+  1560     0371                     u441:
+  1561     0371  2B4D               	goto	l936
+  1562     0372                     u440:
+  1563     0372                     l946:
+  1564     0372  0825               	movf	___awdiv@sign,w
+  1565     0373  1903               	btfsc	3,2
+  1566     0374  2B76               	goto	u451
+  1567     0375  2B77               	goto	u450
+  1568     0376                     u451:
+  1569     0376  2B7C               	goto	l950
+  1570     0377                     u450:
+  1571     0377                     l948:
+  1572     0377  09A6               	comf	___awdiv@quotient,f
+  1573     0378  09A7               	comf	___awdiv@quotient+1,f
+  1574     0379  0AA6               	incf	___awdiv@quotient,f
+  1575     037A  1903               	skipnz
+  1576     037B  0AA7               	incf	___awdiv@quotient+1,f
+  1577     037C                     l950:
+  1578     037C  0827               	movf	___awdiv@quotient+1,w
+  1579     037D  00A1               	movwf	?___awdiv+1
+  1580     037E  0826               	movf	___awdiv@quotient,w
+  1581     037F  00A0               	movwf	?___awdiv
+  1582     0380                     l345:
+  1583     0380  0008               	return
+  1584     0381                     __end_of___awdiv:
+  1585     0000                     ___latbits      equ	0
+  1586     005E                     btemp           set	94	;btemp
+  1587     005E                     btemp0          set	94
+  1588     005F                     btemp1          set	95
+  1589     005E                     wtemp0          set	94
+  1590     005F                     wtemp0a         set	95
+  1591     005F                     ttemp0a         set	95
+  1592     0060                     ltemp0a         set	96
+  1593                           
+  1594                           	psect	config
+  1595                           
+  1596                           ;Config register CONFIG @ 0x2007
+  1597                           ;	Oscillator Selection bits
+  1598                           ;	FOSC = INTRCIO, INTOSC oscillator: I/O function on GP4/OSC2/CLKOUT pin, I/O function o
+      +                          n GP5/OSC1/CLKIN
+  1599                           ;	Watchdog Timer Enable bit
+  1600                           ;	WDTE = OFF, WDT disabled
+  1601                           ;	Power-Up Timer Enable bit
+  1602                           ;	PWRTE = OFF, PWRT disabled
+  1603                           ;	GP3/MCLR pin function select
+  1604                           ;	MCLRE = OFF, GP3/MCLR pin function is digital I/O, MCLR internally tied to VDD
+  1605                           ;	Brown-out Detect Enable bit
+  1606                           ;	BOREN = OFF, BOD disabled
+  1607                           ;	Code Protection bit
+  1608                           ;	CP = OFF, Program Memory code protection is disabled
+  1609                           ;	Data Code Protection bit
+  1610                           ;	CPD = OFF, Data memory code protection is disabled
+  1611     2007                     	org	8199
+  1612     2007  3194               	dw	12692
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        2
+    BSS         3
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON            0      0       0
+    BANK0            62     12      17
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    _main->___awdiv
+    _button->_envia_pacote
+    _envia_pacote->_envia_byte
+    _preambulo->_tempo
+    _envia_byte->_checksum
+    _envia_1->_tempo
+    _envia_0->_tempo
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 4     4      0     905
+                                              8 BANK0      4     4      0
+                            ___awdiv
+                           _adc_init
+                           _adc_read
+                             _button
+                       _envia_pacote
+ ---------------------------------------------------------------------------------
+ (1) _button                                               3     3      0     242
+                                              4 BANK0      3     3      0
+                       _envia_pacote
+ ---------------------------------------------------------------------------------
+ (2) _envia_pacote                                         1     1      0     196
+                                              3 BANK0      1     1      0
+                           _checksum
+                         _envia_byte
+                          _preambulo
+                           _start_rf
+ ---------------------------------------------------------------------------------
+ (3) _start_rf                                             1     1      0       0
+                                              0 BANK0      1     1      0
+ ---------------------------------------------------------------------------------
+ (3) _preambulo                                            1     1      0      46
+                                              1 BANK0      1     1      0
+                              _tempo
+ ---------------------------------------------------------------------------------
+ (3) _envia_byte                                           2     2      0      77
+                                              1 BANK0      2     2      0
+                           _checksum (ARG)
+                            _envia_0
+                            _envia_1
+ ---------------------------------------------------------------------------------
+ (4) _envia_1                                              0     0      0       0
+                              _tempo
+ ---------------------------------------------------------------------------------
+ (4) _envia_0                                              0     0      0       0
+                              _tempo
+ ---------------------------------------------------------------------------------
+ (5) _tempo                                                1     1      0       0
+                                              0 BANK0      1     1      0
+ ---------------------------------------------------------------------------------
+ (3) _checksum                                             1     1      0      15
+                                              0 BANK0      1     1      0
+ ---------------------------------------------------------------------------------
+ (1) _adc_read                                             2     2      0      29
+                                              0 BANK0      2     2      0
+ ---------------------------------------------------------------------------------
+ (1) _adc_init                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) ___awdiv                                              8     4      4     304
+                                              0 BANK0      8     4      4
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 5
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   ___awdiv
+   _adc_init
+   _adc_read
+   _button
+     _envia_pacote
+       _checksum
+       _envia_byte
+         _checksum (ARG)
+         _envia_0 (ARG)
+           _tempo
+         _envia_1 (ARG)
+           _tempo
+       _preambulo
+         _tempo
+       _start_rf
+   _envia_pacote
+
+Address spaces:
+Name               Size   Autos  Total    Usage
+BANK0               62     12      17     27.4%
+BITBANK0            62      0       0      0.0%
+COMMON               0      0       0      0.0%
+BITCOMMON            0      0       0      0.0%
+DATA                 0      0      17      0.0%
+STACK                0      0       0      0.0%
+
+
+Microchip Technology PIC Macro Assembler V3.10 build 20250813170317 
+Symbol Table                                                                                   Sun May 10 13:08:53 2026
+
+                     l60 0318                       l63 031C                       l72 02E7  
+                     l66 026E                       l82 0283                       l91 0296  
+                     l69 02E2                       l85 027C                       l93 02A4  
+                     l79 0275                       l96 02B9                       l88 02B5  
+           ___awdiv@sign 0025                      l100 02CB                      l103 0267  
+                    l106 0293                      l345 0380                      l700 0265  
+                    l708 0268                      l900 02CE                      l910 031D  
+                    l902 02DB                      l830 0280                      l920 032E  
+                    l912 031F                      l904 02E0                      l824 026F  
+                    l832 0276                      l840 02A7                      l930 0340  
+                    l922 0333                      l914 0323                      l906 02E6  
+                    l834 0278                      l826 027D                      l850 0297  
+                    l842 02AE                      l940 0364                      l932 0347  
+                    l924 0335                      l916 0328                      l836 0279  
+                    l828 027F                      l852 0298                      l844 0294  
+                    l950 037C                      l942 0365                      l934 0349  
+                    l926 0337                      l918 032A                      l870 02C3  
+                    l854 029B                      l838 02A5                      l944 036C  
+                    l936 034D                      l928 033D                      l872 02C5  
+                    l864 02BD                      l856 029E                      l880 02ED  
+                    l960 038A                      l938 035E                      l946 0372  
+                    l866 02BF                      l858 02B8                      l874 0286  
+                    l882 02F6                      l970 0391                      l962 038C  
+                    l954 0381                      l948 0377                      l868 02C0  
+                    l876 0291                      l892 0304                      l884 02FB  
+                    l980 03CA                      l972 0397                      l964 038E  
+                    l956 0384                      l894 0306                      l886 0303  
+                    l878 02E8                      l982 03D4                      l974 03BF  
+                    l990 03EA                      l966 038F                      l958 0387  
+                    _GP2 002A                      l896 030F                      l984 03DB  
+                    l976 03C5                      l968 0390                      _GP4 002C  
+                    l898 0312                      l986 03DD                      l978 03C7  
+                    l988 03E0                      u300 0301                      u301 02FF  
+                    u310 0302                      u400 034D                      u320 0318  
+                    u401 034C                      u321 0317                      u250 02A4  
+                    u330 031C                      u251 02A3                      u331 031B  
+                    u420 035E                      u260 02BD                      u421 035D  
+                    u261 02BC                      u350 02E6                      u270 02CB  
+                    u415 034E                      u351 02E5                      u271 02CA  
+                    u440 0372                      u360 0323                      u280 02ED  
+                    u441 0371                      u425 035A                      u361 0322  
+                    u345 02D3                      u281 02EC                      u450 0377  
+                    u370 032E                      u290 02FB                      u451 0376  
+                    u435 0366                      u371 032D                      u291 02FA  
+                    u507 03E5                      u380 033D                      u460 0397  
+                    u381 033C                      u517 03EF                      u461 0396  
+                    u470 03C5                      u527 02F1                      u471 03C4  
+                    u480 03DB                      u537 030B                      u481 03DA  
+                    u395 0341                      u547 02A9                      u557 02B2  
+                    u567 0272                      u577 02DD                      u497 03CF  
+                   _GPIO 0005                     _flag 002C                     _main 0381  
+                   btemp 005E                     start 0000              main@pulso_x 002A  
+            main@pulso_y 002B                    ?_main 0020          __end_of___awdiv 0381  
+                  _CMCON 0019                    _ANSEL 009F          ___awdiv@divisor 0020  
+        ___awdiv@counter 0024          __end_of_envia_0 027D          __end_of_envia_1 0284  
+          ?_envia_pacote 0020                    _tempo 026F                    btemp0 005E  
+                  btemp1 005F                    status 0003                    wtemp0 005E  
+           main@ultimo_x 0030             main@ultimo_y 002F           envia_byte@dado 0021  
+        __initialization 03F6             __end_of_main 03F6              envia_byte@i 0022  
+                 ??_main 0028           ??_envia_pacote 0000                   _ADCON0 001F  
+                 _ADRESH 001E         ___awdiv@dividend 0022                   ?_tempo 0020  
+       __end_of_adc_init 026F         __end_of_adc_read 02E8                   _OSCCAL 0090  
+                 _TRISIO 0085         __end_of_checksum 0268                ??___awdiv 0000  
+                 _button 02E8         ___awdiv@quotient 0026                ??_envia_0 0000  
+              ??_envia_1 0000                   ltemp0a 0060                   ttemp0a 005F  
+       __end_of_start_rf 02B6                   wtemp0a 005F  __end_of__initialization 03FD  
+         __pcstackCOMMON 0000             __pidataBANK0 0261            __end_of_tempo 0276  
+         _OPTION_REGbits 0081                  ??_tempo 0020               __pbssBANK0 002C  
+             __pmaintext 0381     __end_of_envia_pacote 0294                  ?_button 0020  
+              ?_adc_init 0020                ?_adc_read 0020                ?_checksum 0020  
+                _WPUbits 0095               _envia_byte 02B6                  ___awdiv 031D  
+              ?_start_rf 0020               ??_adc_init 0000               ??_adc_read 0020  
+                __ptext1 02E8                  __ptext2 0284                  __ptext3 02A5  
+                __ptext4 0294                  __ptext5 02B6                  __ptext6 027D  
+                __ptext7 0276                  __ptext8 026F                  __ptext9 0263  
+                _envia_0 0276                  _envia_1 027D               ??_checksum 0000  
+                _valor_x 002E                  _valor_y 002D     end_of_initialization 03FD  
+                button@i 0026        __end_of_preambulo 02A5      envia_pacote@comando 0023  
+             ??_start_rf 0020              ?_envia_byte 0020           __end_of_button 031D  
+    start_initialization 03F6             _envia_pacote 0284              __pdataBANK0 002F  
+               ??_button 0024          adc_read@channel 0021                ___latbits 0000  
+          __pcstackBANK0 0020                 ?___awdiv 0020                 ?_envia_0 0020  
+               ?_envia_1 0020                checksum@d 0020               preambulo@i 0021  
+              _preambulo 0294                 _GO_nDONE 00F9             ??_envia_byte 0000  
+             ?_preambulo 0020                 _adc_init 0268                 _adc_read 02CC  
+               _checksum 0263       __end_of_envia_byte 02CC                 __ptext10 02CC  
+               __ptext11 0268                 __ptext12 031D                 _start_rf 02A5  
+            ??_preambulo 0000  

@@ -1,0 +1,4 @@
+C:/Users/arthu/Desktop/Engenharia/Sistemas Embarcados/PIC/Projetos/Projeto_Treino_tiro/Porjeto_Jader_V1.X/_build/Porjeto_Jader_V1/default/CMakeFiles/Porjeto_Jader_V1_default_default_XC8_compile.dir
+C:/Users/arthu/Desktop/Engenharia/Sistemas Embarcados/PIC/Projetos/Projeto_Treino_tiro/Porjeto_Jader_V1.X/_build/Porjeto_Jader_V1/default/CMakeFiles/Porjeto_Jader_V1_default_image_a4AV4g_I.dir
+C:/Users/arthu/Desktop/Engenharia/Sistemas Embarcados/PIC/Projetos/Projeto_Treino_tiro/Porjeto_Jader_V1.X/_build/Porjeto_Jader_V1/default/CMakeFiles/edit_cache.dir
+C:/Users/arthu/Desktop/Engenharia/Sistemas Embarcados/PIC/Projetos/Projeto_Treino_tiro/Porjeto_Jader_V1.X/_build/Porjeto_Jader_V1/default/CMakeFiles/rebuild_cache.dir

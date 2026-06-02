@@ -1,0 +1,1188 @@
+
+
+Microchip MPLAB XC8 Assembler V3.10 build 20250813170317 
+                                                                                               Sun May 17 20:30:00 2026
+
+Microchip MPLAB XC8 C Compiler v3.10 (Free license) build 20250813170317 Og1 
+     1                           	processor	12F629
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	nvBANK0,global,class=BANK0,space=1,delta=1,noexec
+     5                           	psect	cinit,global,class=CODE,space=0,merge=1,delta=2
+     6                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1,noexec
+     7                           	psect	clrtext,global,class=CODE,space=0,delta=2
+     8                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     9                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+    10                           	psect	maintext,global,class=CODE,space=0,split=1,delta=2
+    11                           	psect	text1,local,class=CODE,space=0,merge=1,delta=2
+    12                           	psect	text2,local,class=CODE,space=0,merge=1,delta=2
+    13                           	psect	text3,local,class=CODE,space=0,merge=1,delta=2
+    14                           	psect	text4,local,class=CODE,space=0,merge=1,delta=2
+    15                           	psect	intentry,global,class=CODE,space=0,delta=2
+    16                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    17                           	dabs	1,0x5E,2
+    18     0000                     
+    19                           ; Generated 26/03/2025 GMT
+    20                           ; 
+    21                           ; Copyright © 2025, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    22                           ; All rights reserved.
+    23                           ; 
+    24                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    25                           ; 
+    26                           ; Redistribution and use in source and binary forms, with or without modification, are
+    27                           ; permitted provided that the following conditions are met:
+    28                           ; 
+    29                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    30                           ;        conditions and the following disclaimer.
+    31                           ; 
+    32                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    33                           ;        of conditions and the following disclaimer in the documentation and/or other
+    34                           ;        materials provided with the distribution. Publication is not required when
+    35                           ;        this file is used in an embedded application.
+    36                           ; 
+    37                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    38                           ;        software without specific prior written permission.
+    39                           ; 
+    40                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    41                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    42                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    43                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    44                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    45                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    46                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    47                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    48                           ; 
+    49                           ; 
+    50                           ; Code-generator required, PIC12F629 Definitions
+    51                           ; 
+    52                           ; SFR Addresses
+    53     0004                     fsr             equ	4
+    54     0004                     fsr0            equ	4
+    55     0000                     indf            equ	0
+    56     0000                     indf0           equ	0
+    57     0002                     pc              equ	2
+    58     0002                     pcl             equ	2
+    59     000A                     pclath          equ	10
+    60     0003                     status          equ	3
+    61     0000                     INDF            equ	0	;# 
+    62     0001                     TMR0            equ	1	;# 
+    63     0002                     PCL             equ	2	;# 
+    64     0003                     STATUS          equ	3	;# 
+    65     0004                     FSR             equ	4	;# 
+    66     0005                     GPIO            equ	5	;# 
+    67     000A                     PCLATH          equ	10	;# 
+    68     000B                     INTCON          equ	11	;# 
+    69     000C                     PIR1            equ	12	;# 
+    70     000E                     TMR1            equ	14	;# 
+    71     000E                     TMR1L           equ	14	;# 
+    72     000F                     TMR1H           equ	15	;# 
+    73     0010                     T1CON           equ	16	;# 
+    74     0019                     CMCON           equ	25	;# 
+    75     0081                     OPTION_REG      equ	129	;# 
+    76     0085                     TRISIO          equ	133	;# 
+    77     008C                     PIE1            equ	140	;# 
+    78     008E                     PCON            equ	142	;# 
+    79     0090                     OSCCAL          equ	144	;# 
+    80     0095                     WPU             equ	149	;# 
+    81     0096                     IOC             equ	150	;# 
+    82     0096                     IOCB            equ	150	;# 
+    83     0099                     VRCON           equ	153	;# 
+    84     009A                     EEDATA          equ	154	;# 
+    85     009A                     EEDAT           equ	154	;# 
+    86     009B                     EEADR           equ	155	;# 
+    87     009C                     EECON1          equ	156	;# 
+    88     009D                     EECON2          equ	157	;# 
+    89     0000                     INDF            equ	0	;# 
+    90     0001                     TMR0            equ	1	;# 
+    91     0002                     PCL             equ	2	;# 
+    92     0003                     STATUS          equ	3	;# 
+    93     0004                     FSR             equ	4	;# 
+    94     0005                     GPIO            equ	5	;# 
+    95     000A                     PCLATH          equ	10	;# 
+    96     000B                     INTCON          equ	11	;# 
+    97     000C                     PIR1            equ	12	;# 
+    98     000E                     TMR1            equ	14	;# 
+    99     000E                     TMR1L           equ	14	;# 
+   100     000F                     TMR1H           equ	15	;# 
+   101     0010                     T1CON           equ	16	;# 
+   102     0019                     CMCON           equ	25	;# 
+   103     0081                     OPTION_REG      equ	129	;# 
+   104     0085                     TRISIO          equ	133	;# 
+   105     008C                     PIE1            equ	140	;# 
+   106     008E                     PCON            equ	142	;# 
+   107     0090                     OSCCAL          equ	144	;# 
+   108     0095                     WPU             equ	149	;# 
+   109     0096                     IOC             equ	150	;# 
+   110     0096                     IOCB            equ	150	;# 
+   111     0099                     VRCON           equ	153	;# 
+   112     009A                     EEDATA          equ	154	;# 
+   113     009A                     EEDAT           equ	154	;# 
+   114     009B                     EEADR           equ	155	;# 
+   115     009C                     EECON1          equ	156	;# 
+   116     009D                     EECON2          equ	157	;# 
+   117                           
+   118                           	psect	nvBANK0
+   119     0035                     __pnvBANK0:
+   120     0035                     _qb:
+   121     0035                     	ds	1
+   122     0001                     _TMR0           set	1
+   123     0005                     _GPIO           set	5
+   124     000E                     _TMR1L          set	14
+   125     000F                     _TMR1H          set	15
+   126     0010                     _T1CON          set	16
+   127     0019                     _CMCON          set	25
+   128     002B                     _GP3            set	43
+   129     005D                     _TMR0IE         set	93
+   130     002C                     _GP4            set	44
+   131     002A                     _GP2            set	42
+   132     005F                     _GIE            set	95
+   133     005E                     _PEIE           set	94
+   134     0060                     _TMR1IF         set	96
+   135     005A                     _TMR0IF         set	90
+   136     0081                     _OPTION_REG     set	129
+   137     0085                     _TRISIO         set	133
+   138     0460                     _TMR1IE         set	1120
+   139                           
+   140                           	psect	cinit
+   141     000C                     start_initialization:	
+   142                           ; #config settings
+   143                           
+   144     000C                     __initialization:
+   145                           
+   146                           ; Clear objects allocated to BANK0
+   147     000C  1383               	bcf	3,7	;select IRP bank0
+   148     000D  3020               	movlw	low __pbssBANK0
+   149     000E  0084               	movwf	4
+   150     000F  302C               	movlw	low (__pbssBANK0+12)
+   151     0010  20FD               	fcall	clear_ram0
+   152     0011                     end_of_initialization:	
+   153                           ;End of C runtime variable initialization code
+   154                           
+   155     0011                     __end_of__initialization:
+   156     0011  0183               	clrf	3
+   157     0012  2813               	ljmp	_main	;jump to C main() function
+   158                           
+   159                           	psect	bssBANK0
+   160     0020                     __pbssBANK0:
+   161     0020                     _buffer:
+   162     0020                     	ds	5
+   163     0025                     _botoes:
+   164     0025                     	ds	1
+   165     0026                     _vp2:
+   166     0026                     	ds	1
+   167     0027                     _vp1:
+   168     0027                     	ds	1
+   169     0028                     _lc:
+   170     0028                     	ds	1
+   171     0029                     _hc:
+   172     0029                     	ds	1
+   173     002A                     _flags1:
+   174     002A                     	ds	1
+   175     002B                     _flags:
+   176     002B                     	ds	1
+   177                           
+   178                           	psect	clrtext
+   179     00FD                     clear_ram0:	
+   180                           ;	Called with FSR containing the base address, and
+   181                           ;	W with the last address+1
+   182                           
+   183     00FD  0064               	clrwdt	;clear the watchdog before getting into this loop
+   184     00FE                     clrloop0:
+   185     00FE  0180               	clrf	0	;clear RAM location pointed to by FSR
+   186     00FF  0A84               	incf	4,f	;increment pointer
+   187     0100  0604               	xorwf	4,w	;XOR with final address
+   188     0101  1903               	btfsc	3,2	;have we reached the end yet?
+   189     0102  3400               	retlw	0	;all done for this memory range, return
+   190     0103  0604               	xorwf	4,w	;XOR again to restore value
+   191     0104  28FE               	goto	clrloop0	;do the next byte
+   192                           
+   193                           	psect	cstackCOMMON
+   194     0000                     __pcstackCOMMON:
+   195     0000                     ??_shift_right_buffer:
+   196     0000                     ??_reset_rx:	
+   197                           ; 1 bytes @ 0x0
+   198                           
+   199     0000                     ??_init_system:	
+   200                           ; 1 bytes @ 0x0
+   201                           
+   202                           
+   203                           	psect	cstackBANK0
+   204     002C                     __pcstackBANK0:	
+   205                           ; 1 bytes @ 0x0
+   206                           
+   207     002C                     ?_shift_right_buffer:
+   208     002C                     ?_reset_rx:	
+   209                           ; 1 bytes @ 0x0
+   210                           
+   211     002C                     ?_init_system:	
+   212                           ; 1 bytes @ 0x0
+   213                           
+   214     002C                     ?_isr:	
+   215                           ; 1 bytes @ 0x0
+   216                           
+   217     002C                     ?_main:	
+   218                           ; 1 bytes @ 0x0
+   219                           
+   220     002C                     ??_isr:	
+   221                           ; 1 bytes @ 0x0
+   222                           
+   223                           
+   224                           ; 1 bytes @ 0x0
+   225     002C                     	ds	2
+   226     002E                     shift_right_buffer@bit_in:
+   227                           
+   228                           ; 1 bytes @ 0x2
+   229     002E                     	ds	1
+   230     002F                     shift_right_buffer@carry:
+   231                           
+   232                           ; 1 bytes @ 0x3
+   233     002F                     	ds	1
+   234     0030                     shift_right_buffer@next:
+   235                           
+   236                           ; 1 bytes @ 0x4
+   237     0030                     	ds	1
+   238     0031                     shift_right_buffer@i:
+   239                           
+   240                           ; 1 bytes @ 0x5
+   241     0031                     	ds	1
+   242     0032                     ??_main:
+   243                           
+   244                           ; 1 bytes @ 0x6
+   245     0032                     	ds	2
+   246     0034                     main@checksum:
+   247                           
+   248                           ; 1 bytes @ 0x8
+   249     0034                     	ds	1
+   250                           
+   251                           	psect	maintext
+   252     0013                     __pmaintext:	
+   253 ;;
+   254 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
+   255 ;;
+   256 ;; *************** function _main *****************
+   257 ;; Defined at:
+   258 ;;		line 225 in file "main_RX.c"
+   259 ;; Parameters:    Size  Location     Type
+   260 ;;		None
+   261 ;; Auto vars:     Size  Location     Type
+   262 ;;  checksum        1    8[BANK0 ] unsigned char 
+   263 ;; Return value:  Size  Location     Type
+   264 ;;                  1    wreg      void 
+   265 ;; Registers used:
+   266 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   267 ;; Tracked objects:
+   268 ;;		On entry : B00/0
+   269 ;;		On exit  : 0/0
+   270 ;;		Unchanged: 0/0
+   271 ;; Data sizes:     COMMON   BANK0
+   272 ;;      Params:         0       0
+   273 ;;      Locals:         0       1
+   274 ;;      Temps:          0       2
+   275 ;;      Totals:         0       3
+   276 ;;Total ram usage:        3 bytes
+   277 ;; Hardware stack levels required when called: 2
+   278 ;; This function calls:
+   279 ;;		_init_system
+   280 ;;		_reset_rx
+   281 ;;		_shift_right_buffer
+   282 ;; This function is called by:
+   283 ;;		Startup code after reset
+   284 ;; This function uses a non-reentrant model
+   285 ;;
+   286                           
+   287     0013                     _main:	
+   288                           ;psect for function _main
+   289                           
+   290     0013                     l785:	
+   291                           ;incstack = 0
+   292                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   293                           
+   294                           
+   295                           ;main_RX.c: 227:     init_system();
+   296     0013  20D9               	fcall	_init_system
+   297     0014                     l787:
+   298                           
+   299                           ;main_RX.c: 230:     {;main_RX.c: 231:         _delay((unsigned long)((50)*(4000000/4000
+      +                          000.0)));
+   300     0014  3010               	movlw	16
+   301     0015  1283               	bcf	3,5	;RP0=0, select bank0
+   302     0016  00B2               	movwf	??_main
+   303     0017                     u397:
+   304     0017  0BB2               	decfsz	??_main,f
+   305     0018  2817               	goto	u397
+   306     0019  0000               	nop
+   307     001A                     l789:
+   308                           
+   309                           ;main_RX.c: 237:         if(GP3 && !flags.flag_rok)
+   310     001A  1283               	bcf	3,5	;RP0=0, select bank0
+   311     001B  1D85               	btfss	5,3	;volatile
+   312     001C  281E               	goto	u271
+   313     001D  281F               	goto	u270
+   314     001E                     u271:
+   315     001E  282D               	goto	l86
+   316     001F                     u270:
+   317     001F                     l791:
+   318     001F  192B               	btfsc	_flags,2
+   319     0020  2822               	goto	u281
+   320     0021  2823               	goto	u280
+   321     0022                     u281:
+   322     0022  282D               	goto	l86
+   323     0023                     u280:
+   324     0023                     l793:
+   325                           
+   326                           ;main_RX.c: 238:         {;main_RX.c: 239:             flags.flag_h = 1;
+   327     0023  14AB               	bsf	_flags,1
+   328     0024                     l795:
+   329                           
+   330                           ;main_RX.c: 241:             if(++hc == 0)
+   331     0024  3001               	movlw	1
+   332     0025  07A9               	addwf	_hc,f
+   333     0026  1D03               	btfss	3,2
+   334     0027  2829               	goto	u291
+   335     0028  282A               	goto	u290
+   336     0029                     u291:
+   337     0029  2872               	goto	l827
+   338     002A                     u290:
+   339     002A                     l797:
+   340                           
+   341                           ;main_RX.c: 242:                 hc--;
+   342     002A  3001               	movlw	1
+   343     002B  02A9               	subwf	_hc,f
+   344     002C  2872               	goto	l827
+   345     002D                     l86:	
+   346                           ;main_RX.c: 244:         else
+   347                           
+   348                           
+   349                           ;main_RX.c: 245:         {;main_RX.c: 246:             if(!flags.flag_h)
+   350     002D  18AB               	btfsc	_flags,1
+   351     002E  2830               	goto	u301
+   352     002F  2831               	goto	u300
+   353     0030                     u301:
+   354     0030  283A               	goto	l803
+   355     0031                     u300:
+   356     0031                     l799:
+   357                           
+   358                           ;main_RX.c: 247:             {;main_RX.c: 248:                 if(++lc == 0)
+   359     0031  3001               	movlw	1
+   360     0032  07A8               	addwf	_lc,f
+   361     0033  1D03               	btfss	3,2
+   362     0034  2836               	goto	u311
+   363     0035  2837               	goto	u310
+   364     0036                     u311:
+   365     0036  2872               	goto	l827
+   366     0037                     u310:
+   367     0037                     l801:
+   368                           
+   369                           ;main_RX.c: 249:                     lc--;
+   370     0037  3001               	movlw	1
+   371     0038  02A8               	subwf	_lc,f
+   372     0039  2872               	goto	l827
+   373     003A                     l803:
+   374                           
+   375                           ;main_RX.c: 252:             {;main_RX.c: 253:                 if(lc > 30)
+   376     003A  301F               	movlw	31
+   377     003B  0228               	subwf	_lc,w
+   378     003C  1C03               	skipc
+   379     003D  283F               	goto	u321
+   380     003E  2840               	goto	u320
+   381     003F                     u321:
+   382     003F  2843               	goto	l807
+   383     0040                     u320:
+   384     0040                     l805:
+   385                           
+   386                           ;main_RX.c: 254:                 {;main_RX.c: 255:                     qb = 40;
+   387     0040  3028               	movlw	40
+   388     0041  00B5               	movwf	_qb
+   389                           
+   390                           ;main_RX.c: 256:                 }
+   391     0042  2871               	goto	l825
+   392     0043                     l807:
+   393                           
+   394                           ;main_RX.c: 258:                 {;main_RX.c: 259:                     shift_right_buffe
+      +                          r(lc > hc);
+   395     0043  0828               	movf	_lc,w
+   396     0044  0229               	subwf	_hc,w
+   397     0045  1C03               	skipc
+   398     0046  2848               	goto	u331
+   399     0047  284A               	goto	u330
+   400     0048                     u331:
+   401     0048  3001               	movlw	1
+   402     0049  284B               	goto	u340
+   403     004A                     u330:
+   404     004A  3000               	movlw	0
+   405     004B                     u340:
+   406     004B  20B4               	fcall	_shift_right_buffer
+   407     004C                     l809:
+   408                           
+   409                           ;main_RX.c: 261:                     if(--qb == 0)
+   410     004C  3001               	movlw	1
+   411     004D  1283               	bcf	3,5	;RP0=0, select bank0
+   412     004E  02B5               	subwf	_qb,f
+   413     004F  1D03               	btfss	3,2
+   414     0050  2852               	goto	u351
+   415     0051  2853               	goto	u350
+   416     0052                     u351:
+   417     0052  2871               	goto	l825
+   418     0053                     u350:
+   419     0053                     l811:
+   420                           
+   421                           ;main_RX.c: 262:                     {;main_RX.c: 263:                         qb = 40;
+   422     0053  3028               	movlw	40
+   423     0054  00B5               	movwf	_qb
+   424     0055                     l813:
+   425                           
+   426                           ;main_RX.c: 265:                         uint8_t checksum =
+   427     0055  0822               	movf	_buffer+2,w
+   428     0056  0721               	addwf	_buffer+1,w
+   429     0057  00B2               	movwf	??_main
+   430     0058  0823               	movf	_buffer+3,w
+   431     0059  0732               	addwf	??_main,w
+   432     005A  00B3               	movwf	??_main+1
+   433     005B  0824               	movf	_buffer+4,w
+   434     005C  0733               	addwf	??_main+1,w
+   435     005D  00B4               	movwf	main@checksum
+   436     005E                     l815:
+   437                           
+   438                           ;main_RX.c: 271:                         if((checksum == buffer[0]) &&
+   439     005E  0820               	movf	_buffer,w
+   440     005F  0634               	xorwf	main@checksum,w
+   441     0060  1D03               	skipz
+   442     0061  2863               	goto	u361
+   443     0062  2864               	goto	u360
+   444     0063                     u361:
+   445     0063  2871               	goto	l825
+   446     0064                     u360:
+   447     0064                     l817:
+   448     0064  3057               	movlw	87
+   449     0065  0624               	xorwf	_buffer+4,w
+   450     0066  1D03               	btfss	3,2
+   451     0067  2869               	goto	u371
+   452     0068  286A               	goto	u370
+   453     0069                     u371:
+   454     0069  2871               	goto	l825
+   455     006A                     u370:
+   456     006A                     l819:
+   457                           
+   458                           ;main_RX.c: 273:                         {;main_RX.c: 278:                             v
+      +                          p1 = ~buffer[3];
+   459     006A  0923               	comf	_buffer+3,w
+   460     006B  00A7               	movwf	_vp1	;volatile
+   461                           
+   462                           ;main_RX.c: 285:                             vp2 = ~buffer[3];
+   463     006C  0923               	comf	_buffer+3,w
+   464     006D  00A6               	movwf	_vp2	;volatile
+   465     006E                     l821:
+   466                           
+   467                           ;main_RX.c: 287:                             botoes = buffer[1];
+   468     006E  0821               	movf	_buffer+1,w
+   469     006F  00A5               	movwf	_botoes
+   470     0070                     l823:
+   471                           
+   472                           ;main_RX.c: 289:                             flags.flag_rok = 1;
+   473     0070  152B               	bsf	_flags,2
+   474     0071                     l825:
+   475                           
+   476                           ;main_RX.c: 294:                 reset_rx();
+   477     0071  2105               	fcall	_reset_rx
+   478     0072                     l827:
+   479                           
+   480                           ;main_RX.c: 302:         if(flags.flag_rok)
+   481     0072  1283               	bcf	3,5	;RP0=0, select bank0
+   482     0073  1D2B               	btfss	_flags,2
+   483     0074  2876               	goto	u381
+   484     0075  2877               	goto	u380
+   485     0076                     u381:
+   486     0076  2814               	goto	l787
+   487     0077                     u380:
+   488     0077                     l829:
+   489                           
+   490                           ;main_RX.c: 303:         {;main_RX.c: 304:             flags.flag_rok = 0;
+   491     0077  112B               	bcf	_flags,2
+   492     0078  2814               	goto	l787
+   493     0079  280B               	ljmp	start
+   494     007A                     __end_of_main:
+   495                           
+   496                           	psect	text1
+   497     00B4                     __ptext1:	
+   498 ;; *************** function _shift_right_buffer *****************
+   499 ;; Defined at:
+   500 ;;		line 75 in file "main_RX.c"
+   501 ;; Parameters:    Size  Location     Type
+   502 ;;  bit_in          1    wreg     unsigned char 
+   503 ;; Auto vars:     Size  Location     Type
+   504 ;;  bit_in          1    2[BANK0 ] unsigned char 
+   505 ;;  next            1    4[BANK0 ] unsigned char 
+   506 ;;  i               1    5[BANK0 ] char 
+   507 ;;  carry           1    3[BANK0 ] unsigned char 
+   508 ;; Return value:  Size  Location     Type
+   509 ;;                  1    wreg      void 
+   510 ;; Registers used:
+   511 ;;		wreg, fsr0l, fsr0h, status,2, status,0
+   512 ;; Tracked objects:
+   513 ;;		On entry : 0/0
+   514 ;;		On exit  : 0/0
+   515 ;;		Unchanged: 0/0
+   516 ;; Data sizes:     COMMON   BANK0
+   517 ;;      Params:         0       0
+   518 ;;      Locals:         0       4
+   519 ;;      Temps:          0       0
+   520 ;;      Totals:         0       4
+   521 ;;Total ram usage:        4 bytes
+   522 ;; Hardware stack levels used: 1
+   523 ;; Hardware stack levels required when called: 1
+   524 ;; This function calls:
+   525 ;;		Nothing
+   526 ;; This function is called by:
+   527 ;;		_main
+   528 ;; This function uses a non-reentrant model
+   529 ;;
+   530                           
+   531     00B4                     _shift_right_buffer:	
+   532                           ;psect for function _shift_right_buffer
+   533                           
+   534                           
+   535                           ;incstack = 0
+   536                           ; Regs used in _shift_right_buffer: [wreg-fsr0h+status,2+status,0]
+   537                           ;shift_right_buffer@bit_in stored from wreg
+   538     00B4  1283               	bcf	3,5	;RP0=0, select bank0
+   539     00B5  00AE               	movwf	shift_right_buffer@bit_in
+   540     00B6                     l643:
+   541                           
+   542                           ;main_RX.c: 75: void shift_right_buffer(uint8_t bit_in);main_RX.c: 76: {;main_RX.c: 77: 
+      +                              uint8_t carry = bit_in;
+   543     00B6  082E               	movf	shift_right_buffer@bit_in,w
+   544     00B7  00AF               	movwf	shift_right_buffer@carry
+   545     00B8                     l645:
+   546                           
+   547                           ;main_RX.c: 79:     for(int8_t i = 4; i >= 0; i--)
+   548     00B8  3004               	movlw	4
+   549     00B9  00B1               	movwf	shift_right_buffer@i
+   550     00BA                     l651:
+   551                           
+   552                           ;main_RX.c: 80:     {;main_RX.c: 81:         uint8_t next = buffer[i] & 1;
+   553     00BA  0831               	movf	shift_right_buffer@i,w
+   554     00BB  3E20               	addlw	(low (_buffer| 0))& (0+255)
+   555     00BC  0084               	movwf	4
+   556     00BD  1383               	bcf	3,7	;select IRP bank0
+   557     00BE  0800               	movf	0,w
+   558     00BF  00B0               	movwf	shift_right_buffer@next
+   559     00C0                     l653:
+   560     00C0  3001               	movlw	1
+   561     00C1  05B0               	andwf	shift_right_buffer@next,f
+   562     00C2                     l655:
+   563                           
+   564                           ;main_RX.c: 83:         buffer[i] >>= 1;
+   565     00C2  0831               	movf	shift_right_buffer@i,w
+   566     00C3  3E20               	addlw	(low (_buffer| 0))& (0+255)
+   567     00C4  0084               	movwf	4
+   568     00C5  1003               	clrc
+   569     00C6  0C80               	rrf	0,f
+   570                           
+   571                           ;main_RX.c: 85:         if(carry)
+   572     00C7  082F               	movf	shift_right_buffer@carry,w
+   573     00C8  1903               	btfsc	3,2
+   574     00C9  28CB               	goto	u11
+   575     00CA  28CC               	goto	u10
+   576     00CB                     u11:
+   577     00CB  28D0               	goto	l659
+   578     00CC                     u10:
+   579     00CC                     l657:
+   580                           
+   581                           ;main_RX.c: 86:             buffer[i] |= 0x80;
+   582     00CC  0831               	movf	shift_right_buffer@i,w
+   583     00CD  3E20               	addlw	(low (_buffer| 0))& (0+255)
+   584     00CE  0084               	movwf	4
+   585     00CF  1780               	bsf	0,7
+   586     00D0                     l659:
+   587                           
+   588                           ;main_RX.c: 88:         carry = next;
+   589     00D0  0830               	movf	shift_right_buffer@next,w
+   590     00D1  00AF               	movwf	shift_right_buffer@carry
+   591     00D2                     l661:
+   592                           
+   593                           ;main_RX.c: 89:     }
+   594     00D2  30FF               	movlw	255
+   595     00D3  07B1               	addwf	shift_right_buffer@i,f
+   596     00D4                     l663:
+   597     00D4  1FB1               	btfss	shift_right_buffer@i,7
+   598     00D5  28D7               	goto	u21
+   599     00D6  28D8               	goto	u20
+   600     00D7                     u21:
+   601     00D7  28BA               	goto	l651
+   602     00D8                     u20:
+   603     00D8                     l60:
+   604     00D8  0008               	return
+   605     00D9                     __end_of_shift_right_buffer:
+   606                           
+   607                           	psect	text2
+   608     0105                     __ptext2:	
+   609 ;; *************** function _reset_rx *****************
+   610 ;; Defined at:
+   611 ;;		line 96 in file "main_RX.c"
+   612 ;; Parameters:    Size  Location     Type
+   613 ;;		None
+   614 ;; Auto vars:     Size  Location     Type
+   615 ;;		None
+   616 ;; Return value:  Size  Location     Type
+   617 ;;                  1    wreg      void 
+   618 ;; Registers used:
+   619 ;;		status,2
+   620 ;; Tracked objects:
+   621 ;;		On entry : 0/0
+   622 ;;		On exit  : 0/0
+   623 ;;		Unchanged: 0/0
+   624 ;; Data sizes:     COMMON   BANK0
+   625 ;;      Params:         0       0
+   626 ;;      Locals:         0       0
+   627 ;;      Temps:          0       0
+   628 ;;      Totals:         0       0
+   629 ;;Total ram usage:        0 bytes
+   630 ;; Hardware stack levels used: 1
+   631 ;; Hardware stack levels required when called: 1
+   632 ;; This function calls:
+   633 ;;		Nothing
+   634 ;; This function is called by:
+   635 ;;		_main
+   636 ;; This function uses a non-reentrant model
+   637 ;;
+   638                           
+   639     0105                     _reset_rx:	
+   640                           ;psect for function _reset_rx
+   641                           
+   642     0105                     l665:	
+   643                           ;incstack = 0
+   644                           ; Regs used in _reset_rx: [status,2]
+   645                           
+   646                           
+   647                           ;main_RX.c: 98:     lc = 0;
+   648     0105  1283               	bcf	3,5	;RP0=0, select bank0
+   649     0106  01A8               	clrf	_lc
+   650                           
+   651                           ;main_RX.c: 100:     hc = 0;
+   652     0107  01A9               	clrf	_hc
+   653     0108                     l667:
+   654                           
+   655                           ;main_RX.c: 102:     flags.flag_h = 0;
+   656     0108  10AB               	bcf	_flags,1
+   657     0109                     l63:
+   658     0109  0008               	return
+   659     010A                     __end_of_reset_rx:
+   660                           
+   661                           	psect	text3
+   662     00D9                     __ptext3:	
+   663 ;; *************** function _init_system *****************
+   664 ;; Defined at:
+   665 ;;		line 109 in file "main_RX.c"
+   666 ;; Parameters:    Size  Location     Type
+   667 ;;		None
+   668 ;; Auto vars:     Size  Location     Type
+   669 ;;		None
+   670 ;; Return value:  Size  Location     Type
+   671 ;;                  1    wreg      void 
+   672 ;; Registers used:
+   673 ;;		status,2
+   674 ;; Tracked objects:
+   675 ;;		On entry : 0/0
+   676 ;;		On exit  : 0/0
+   677 ;;		Unchanged: 0/0
+   678 ;; Data sizes:     COMMON   BANK0
+   679 ;;      Params:         0       0
+   680 ;;      Locals:         0       0
+   681 ;;      Temps:          0       0
+   682 ;;      Totals:         0       0
+   683 ;;Total ram usage:        0 bytes
+   684 ;; Hardware stack levels used: 1
+   685 ;; Hardware stack levels required when called: 1
+   686 ;; This function calls:
+   687 ;;		Nothing
+   688 ;; This function is called by:
+   689 ;;		_main
+   690 ;; This function uses a non-reentrant model
+   691 ;;
+   692                           
+   693     00D9                     _init_system:	
+   694                           ;psect for function _init_system
+   695                           
+   696     00D9                     l669:	
+   697                           ;incstack = 0
+   698                           ; Regs used in _init_system: [status,2]
+   699                           
+   700                           
+   701                           ;main_RX.c: 111:     CMCON = 0x07;
+   702     00D9  3007               	movlw	7
+   703     00DA  1283               	bcf	3,5	;RP0=0, select bank0
+   704     00DB  0099               	movwf	25	;volatile
+   705                           
+   706                           ;main_RX.c: 113:     TRISIO = 0b001000;
+   707     00DC  3008               	movlw	8
+   708     00DD  1683               	bsf	3,5	;RP0=1, select bank1
+   709     00DE  0085               	movwf	5	;volatile
+   710                           
+   711                           ;main_RX.c: 115:     OPTION_REG = 0x01;
+   712     00DF  3001               	movlw	1
+   713     00E0  0081               	movwf	1	;volatile
+   714                           
+   715                           ;main_RX.c: 117:     T1CON = 0x01;
+   716     00E1  3001               	movlw	1
+   717     00E2  1283               	bcf	3,5	;RP0=0, select bank0
+   718     00E3  0090               	movwf	16	;volatile
+   719                           
+   720                           ;main_RX.c: 119:     TMR1H = 0xD8;
+   721     00E4  30D8               	movlw	216
+   722     00E5  008F               	movwf	15	;volatile
+   723                           
+   724                           ;main_RX.c: 120:     TMR1L = 0xF0;
+   725     00E6  30F0               	movlw	240
+   726     00E7  008E               	movwf	14	;volatile
+   727     00E8                     l671:
+   728                           
+   729                           ;main_RX.c: 122:     GPIO = 0;
+   730     00E8  0185               	clrf	5	;volatile
+   731     00E9                     l673:
+   732                           
+   733                           ;main_RX.c: 124:     qb = 40;
+   734     00E9  3028               	movlw	40
+   735     00EA  00B5               	movwf	_qb
+   736                           
+   737                           ;main_RX.c: 126:     hc = 0;
+   738     00EB  01A9               	clrf	_hc
+   739                           
+   740                           ;main_RX.c: 127:     lc = 0;
+   741     00EC  01A8               	clrf	_lc
+   742     00ED                     l675:
+   743                           
+   744                           ;main_RX.c: 129:     flags.flag_vez = 0;
+   745     00ED  102B               	bcf	_flags,0
+   746     00EE                     l677:
+   747                           
+   748                           ;main_RX.c: 130:     flags.flag_h = 0;
+   749     00EE  10AB               	bcf	_flags,1
+   750     00EF                     l679:
+   751                           
+   752                           ;main_RX.c: 131:     flags.flag_rok = 0;
+   753     00EF  112B               	bcf	_flags,2
+   754     00F0                     l681:
+   755                           
+   756                           ;main_RX.c: 132:     flags.flag_tpr = 0;
+   757     00F0  11AB               	bcf	_flags,3
+   758     00F1                     l683:
+   759                           
+   760                           ;main_RX.c: 134:     flags1.flag_it1 = 0;
+   761     00F1  102A               	bcf	_flags1,0
+   762     00F2                     l685:
+   763                           
+   764                           ;main_RX.c: 137:     vp1 = 0x3F;
+   765     00F2  303F               	movlw	63
+   766     00F3  00A7               	movwf	_vp1	;volatile
+   767     00F4                     l687:
+   768                           
+   769                           ;main_RX.c: 138:     vp2 = 0x3F;
+   770     00F4  303F               	movlw	63
+   771     00F5  00A6               	movwf	_vp2	;volatile
+   772     00F6                     l689:
+   773                           
+   774                           ;main_RX.c: 140:     TMR0IF = 0;
+   775     00F6  110B               	bcf	11,2	;volatile
+   776     00F7                     l691:
+   777                           
+   778                           ;main_RX.c: 141:     TMR1IF = 0;
+   779     00F7  100C               	bcf	12,0	;volatile
+   780     00F8                     l693:
+   781                           
+   782                           ;main_RX.c: 143:     TMR1IE = 1;
+   783     00F8  1683               	bsf	3,5	;RP0=1, select bank1
+   784     00F9  140C               	bsf	12,0	;volatile
+   785     00FA                     l695:
+   786                           
+   787                           ;main_RX.c: 145:     PEIE = 1;
+   788     00FA  170B               	bsf	11,6	;volatile
+   789     00FB                     l697:
+   790                           
+   791                           ;main_RX.c: 146:     GIE = 1;
+   792     00FB  178B               	bsf	11,7	;volatile
+   793     00FC                     l66:
+   794     00FC  0008               	return
+   795     00FD                     __end_of_init_system:
+   796                           
+   797                           	psect	text4
+   798     007A                     __ptext4:	
+   799 ;; *************** function _isr *****************
+   800 ;; Defined at:
+   801 ;;		line 153 in file "main_RX.c"
+   802 ;; Parameters:    Size  Location     Type
+   803 ;;		None
+   804 ;; Auto vars:     Size  Location     Type
+   805 ;;		None
+   806 ;; Return value:  Size  Location     Type
+   807 ;;                  1    wreg      void 
+   808 ;; Registers used:
+   809 ;;		wreg
+   810 ;; Tracked objects:
+   811 ;;		On entry : 0/0
+   812 ;;		On exit  : 0/0
+   813 ;;		Unchanged: 0/0
+   814 ;; Data sizes:     COMMON   BANK0
+   815 ;;      Params:         0       0
+   816 ;;      Locals:         0       0
+   817 ;;      Temps:          0       2
+   818 ;;      Totals:         0       2
+   819 ;;Total ram usage:        2 bytes
+   820 ;; Hardware stack levels used: 1
+   821 ;; This function calls:
+   822 ;;		Nothing
+   823 ;; This function is called by:
+   824 ;;		Interrupt level 1
+   825 ;; This function uses a non-reentrant model
+   826 ;;
+   827                           
+   828     007A                     _isr:	
+   829                           ;psect for function _isr
+   830                           
+   831     007A                     i1l765:
+   832                           
+   833                           ;main_RX.c: 159:     if(TMR1IF)
+   834     007A  1C0C               	btfss	12,0	;volatile
+   835     007B  287D               	goto	u21_21
+   836     007C  287E               	goto	u21_20
+   837     007D                     u21_21:
+   838     007D  2891               	goto	i1l71
+   839     007E                     u21_20:
+   840     007E                     i1l767:
+   841                           
+   842                           ;main_RX.c: 160:     {;main_RX.c: 161:         TMR1H = 0xD8;
+   843     007E  30D8               	movlw	216
+   844     007F  008F               	movwf	15	;volatile
+   845                           
+   846                           ;main_RX.c: 162:         TMR1L = 0xF0;
+   847     0080  30F0               	movlw	240
+   848     0081  008E               	movwf	14	;volatile
+   849                           
+   850                           ;main_RX.c: 164:         flags1.flag_it1 = 1;
+   851     0082  142A               	bsf	_flags1,0
+   852                           
+   853                           ;main_RX.c: 166:         flags.flag_tpr = 0;
+   854     0083  11AB               	bcf	_flags,3
+   855                           
+   856                           ;main_RX.c: 169:         if(!flags.flag_vez)
+   857     0084  182B               	btfsc	_flags,0
+   858     0085  2887               	goto	u22_21
+   859     0086  2888               	goto	u22_20
+   860     0087                     u22_21:
+   861     0087  288B               	goto	i1l72
+   862     0088                     u22_20:
+   863     0088                     i1l769:
+   864                           
+   865                           ;main_RX.c: 170:         {;main_RX.c: 171:             GP2 = 1;
+   866     0088  1505               	bsf	5,2	;volatile
+   867                           
+   868                           ;main_RX.c: 173:             flags.flag_vez = 1;
+   869     0089  142B               	bsf	_flags,0
+   870                           
+   871                           ;main_RX.c: 174:         }
+   872     008A  288D               	goto	i1l73
+   873     008B                     i1l72:	
+   874                           ;main_RX.c: 175:         else
+   875                           
+   876                           
+   877                           ;main_RX.c: 176:         {;main_RX.c: 177:             GP4 = 1;
+   878     008B  1605               	bsf	5,4	;volatile
+   879                           
+   880                           ;main_RX.c: 179:             flags.flag_vez = 0;
+   881     008C  102B               	bcf	_flags,0
+   882     008D                     i1l73:	
+   883                           ;main_RX.c: 180:         }
+   884                           
+   885                           
+   886                           ;main_RX.c: 182:         TMR0 = 64;
+   887     008D  3040               	movlw	64
+   888     008E  0081               	movwf	1	;volatile
+   889                           
+   890                           ;main_RX.c: 184:         TMR0IE = 1;
+   891     008F  168B               	bsf	11,5	;volatile
+   892                           
+   893                           ;main_RX.c: 186:         TMR1IF = 0;
+   894     0090  100C               	bcf	12,0	;volatile
+   895     0091                     i1l71:	
+   896                           ;main_RX.c: 187:     }
+   897                           
+   898                           
+   899                           ;main_RX.c: 193:     if(TMR0IF)
+   900     0091  1D0B               	btfss	11,2	;volatile
+   901     0092  2894               	goto	u23_21
+   902     0093  2895               	goto	u23_20
+   903     0094                     u23_21:
+   904     0094  28AD               	goto	i1l80
+   905     0095                     u23_20:
+   906     0095                     i1l771:
+   907                           
+   908                           ;main_RX.c: 194:     {;main_RX.c: 195:         if(!flags1.flag_it1)
+   909     0095  182A               	btfsc	_flags1,0
+   910     0096  2898               	goto	u24_21
+   911     0097  2899               	goto	u24_20
+   912     0098                     u24_21:
+   913     0098  28AB               	goto	i1l781
+   914     0099                     u24_20:
+   915     0099                     i1l773:
+   916                           
+   917                           ;main_RX.c: 196:         {;main_RX.c: 197:             if(flags.flag_tpr)
+   918     0099  1DAB               	btfss	_flags,3
+   919     009A  289C               	goto	u25_21
+   920     009B  289D               	goto	u25_20
+   921     009C                     u25_21:
+   922     009C  28A1               	goto	i1l76
+   923     009D                     u25_20:
+   924     009D                     i1l775:
+   925                           
+   926                           ;main_RX.c: 198:             {;main_RX.c: 199:                 GP2 = 0;
+   927     009D  1105               	bcf	5,2	;volatile
+   928                           
+   929                           ;main_RX.c: 200:                 GP4 = 0;
+   930     009E  1205               	bcf	5,4	;volatile
+   931                           
+   932                           ;main_RX.c: 202:                 TMR0IE = 0;
+   933     009F  128B               	bcf	11,5	;volatile
+   934                           
+   935                           ;main_RX.c: 203:             }
+   936     00A0  28AB               	goto	i1l781
+   937     00A1                     i1l76:	
+   938                           ;main_RX.c: 204:             else
+   939                           
+   940                           
+   941                           ;main_RX.c: 205:             {;main_RX.c: 206:                 flags.flag_tpr = 1;
+   942     00A1  15AB               	bsf	_flags,3
+   943                           
+   944                           ;main_RX.c: 208:                 if(flags.flag_vez)
+   945     00A2  1C2B               	btfss	_flags,0
+   946     00A3  28A5               	goto	u26_21
+   947     00A4  28A6               	goto	u26_20
+   948     00A5                     u26_21:
+   949     00A5  28A9               	goto	i1l779
+   950     00A6                     u26_20:
+   951     00A6                     i1l777:
+   952                           
+   953                           ;main_RX.c: 209:                     TMR0 = vp1;
+   954     00A6  0827               	movf	_vp1,w	;volatile
+   955     00A7  0081               	movwf	1	;volatile
+   956     00A8  28AB               	goto	i1l781
+   957     00A9                     i1l779:
+   958                           
+   959                           ;main_RX.c: 211:                     TMR0 = vp2;
+   960     00A9  0826               	movf	_vp2,w	;volatile
+   961     00AA  0081               	movwf	1	;volatile
+   962     00AB                     i1l781:
+   963                           
+   964                           ;main_RX.c: 215:         flags1.flag_it1 = 0;
+   965     00AB  102A               	bcf	_flags1,0
+   966     00AC                     i1l783:
+   967                           
+   968                           ;main_RX.c: 217:         TMR0IF = 0;
+   969     00AC  110B               	bcf	11,2	;volatile
+   970     00AD                     i1l80:
+   971     00AD  082D               	movf	??_isr+1,w
+   972     00AE  008A               	movwf	10
+   973     00AF  0E2C               	swapf	??_isr,w
+   974     00B0  0083               	movwf	3
+   975     00B1  0EDE               	swapf	btemp,f
+   976     00B2  0E5E               	swapf	btemp,w
+   977     00B3  0009               	retfie
+   978     00B4                     __end_of_isr:
+   979     0000                     ___latbits      equ	0
+   980     005E                     btemp           set	94	;btemp
+   981     005E                     btemp0          set	94
+   982     005F                     btemp1          set	95
+   983     005E                     wtemp0          set	94
+   984     005F                     wtemp0a         set	95
+   985     005F                     ttemp0a         set	95
+   986     0060                     ltemp0a         set	96
+   987                           
+   988                           	psect	intentry
+   989     0004                     __pintentry:	
+   990                           ;incstack = 0
+   991                           ; Regs used in _isr: [wreg]
+   992                           
+   993     0004                     interrupt_function:
+   994     005E                     saved_w         set	btemp
+   995     0004  00DE               	movwf	btemp
+   996     0005  0E03               	swapf	3,w
+   997     0006  1283               	bcf	3,5	;RP0=0, select bank0
+   998     0007  00AC               	movwf	??_isr
+   999     0008  080A               	movf	10,w
+  1000     0009  00AD               	movwf	??_isr+1
+  1001     000A  287A               	ljmp	_isr
+  1002                           
+  1003                           	psect	config
+  1004                           
+  1005                           ;Config register CONFIG @ 0x2007
+  1006                           ;	Oscillator Selection bits
+  1007                           ;	FOSC = INTRCIO, INTOSC oscillator: I/O function on GP4/OSC2/CLKOUT pin, I/O function o
+      +                          n GP5/OSC1/CLKIN
+  1008                           ;	Watchdog Timer Enable bit
+  1009                           ;	WDTE = OFF, WDT disabled
+  1010                           ;	Power-Up Timer Enable bit
+  1011                           ;	PWRTE = ON, PWRT enabled
+  1012                           ;	GP3/MCLR pin function select
+  1013                           ;	MCLRE = OFF, GP3/MCLR pin function is digital I/O, MCLR internally tied to VDD
+  1014                           ;	Brown-out Detect Enable bit
+  1015                           ;	BOREN = ON, BOD enabled
+  1016                           ;	Code Protection bit
+  1017                           ;	CP = OFF, Program Memory code protection is disabled
+  1018                           ;	Data Code Protection bit
+  1019                           ;	CPD = OFF, Data memory code protection is disabled
+  1020     2007                     	org	8199
+  1021     2007  31C4               	dw	12740
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         12
+    Persistent  1
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON            0      0       0
+    BANK0            62      9      22
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _isr in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    _main->_shift_right_buffer
+
+Critical Paths under _isr in BANK0
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 3     3      0     143
+                                              6 BANK0      3     3      0
+                        _init_system
+                           _reset_rx
+                 _shift_right_buffer
+ ---------------------------------------------------------------------------------
+ (1) _shift_right_buffer                                   4     4      0     120
+                                              2 BANK0      4     4      0
+ ---------------------------------------------------------------------------------
+ (1) _reset_rx                                             0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _init_system                                          0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (2) _isr                                                  2     2      0       0
+                                              0 BANK0      2     2      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _init_system
+   _reset_rx
+   _shift_right_buffer
+
+ _isr (ROOT)
+
+Address spaces:
+Name               Size   Autos  Total    Usage
+BITCOMMON            0      0       0      0.0%
+BITBANK0            62      0       0      0.0%
+COMMON               0      0       0      0.0%
+BANK0               62      9      22     35.5%
+STACK                0      0       0      0.0%
+DATA                 0      0      22      0.0%
+
+
+Microchip Technology PIC Macro Assembler V3.10 build 20250813170317 
+Symbol Table                                                                                   Sun May 17 20:30:00 2026
+
+                        l60 00D8                          l63 0109                          l66 00FC  
+                        l86 002D                          u10 00CC                          u11 00CB  
+                        u20 00D8                          u21 00D7                          _hc 0029  
+                        _lc 0028                          _qb 0035                          fsr 0004  
+                       l801 0037                         l651 00BA                         l643 00B6  
+                       l811 0053                         l803 003A                         l661 00D2  
+                       l653 00C0                         l645 00B8                         l821 006E  
+                       l813 0055                         l805 0040                         l671 00E8  
+                       l663 00D4                         l655 00C2                         l823 0070  
+                       l815 005E                         l807 0043                         l681 00F0  
+                       l673 00E9                         l665 0105                         l657 00CC  
+                       l817 0064                         l809 004C                         l825 0071  
+                       l691 00F7                         l683 00F1                         l675 00ED  
+                       l667 0108                         l659 00D0                         l819 006A  
+                       l827 0072                         l693 00F8                         l685 00F2  
+                       l677 00EE                         l669 00D9                         l829 0077  
+                       l695 00FA                         l687 00F4                         l679 00EF  
+                       l791 001F                         l697 00FB                         l689 00F6  
+                       l793 0023                         l785 0013                         l795 0024  
+                       l787 0014                         l797 002A                         l789 001A  
+                       _GP2 002A                         l799 0031                         _GP3 002B  
+                       _GP4 002C                         _GIE 005F                         u300 0031  
+                       u301 0030                         u310 0037                         u311 0036  
+                       u320 0040                         u321 003F                         u330 004A  
+                       u331 0048                         u340 004B                         u350 0053  
+                       u270 001F                         u351 0052                         u271 001E  
+                       u360 0064                         u280 0023                         u361 0063  
+                       u281 0022                         u370 006A                         u290 002A  
+                       u371 0069                         u291 0029                         u380 0077  
+                       u381 0076                         u397 0017                         _vp1 0027  
+                       _vp2 0026                         _isr 007A                         fsr0 0004  
+                       indf 0000                        ?_isr 002C                        _GPIO 0005  
+                      _PEIE 005E                        i1l71 0091                        i1l80 00AD  
+                      i1l72 008B                        i1l73 008D                        i1l76 00A1  
+                      _TMR0 0001                        _main 0013                        btemp 005E  
+                      start 000B                main@checksum 0034                       ??_isr 002C  
+                     ?_main 002C                       _CMCON 0019     shift_right_buffer@carry 002F  
+                     _T1CON 0010                       i1l771 0095                       i1l773 0099  
+                     i1l781 00AB                       i1l765 007A                       i1l783 00AC  
+                     i1l775 009D                       i1l767 007E                       i1l777 00A6  
+                     i1l769 0088                       i1l779 00A9                       u21_20 007E  
+                     u21_21 007D                       u22_20 0088                       u22_21 0087  
+                     u23_20 0095                       u23_21 0094                       u24_20 0099  
+                     u24_21 0098                       u25_20 009D                       u25_21 009C  
+                     _TMR1H 000F                       _TMR1L 000E                       u26_20 00A6  
+                     u26_21 00A5                ?_init_system 002C                       _flags 002B  
+                     btemp0 005E                       btemp1 005F                       pclath 000A  
+                     status 0003                       wtemp0 005E             __initialization 000C  
+              __end_of_main 007A                      ??_main 0032    shift_right_buffer@bit_in 002E  
+                    _TMR0IE 005D                      _TMR0IF 005A                      _TMR1IE 0460  
+                    _TMR1IF 0060                      _TRISIO 0085                      _flags1 002A  
+                    _buffer 0020                      _botoes 0025            __end_of_reset_rx 010A  
+                    ltemp0a 0060                      saved_w 005E                      ttemp0a 005F  
+                    wtemp0a 005F     __end_of__initialization 0011              __pcstackCOMMON 0000  
+__end_of_shift_right_buffer 00D9                  __pbssBANK0 0020                  __pmaintext 0013  
+                __pintentry 0004                   ?_reset_rx 002C                     __ptext1 00B4  
+                   __ptext2 0105                     __ptext3 00D9                     __ptext4 007A  
+                   clrloop0 00FE        end_of_initialization 0011                  ??_reset_rx 0000  
+    shift_right_buffer@next 0030         start_initialization 000C         shift_right_buffer@i 0031  
+               __end_of_isr 00B4          _shift_right_buffer 00B4         ?_shift_right_buffer 002C  
+      ??_shift_right_buffer 0000                   ___latbits 0000               __pcstackBANK0 002C  
+             ??_init_system 0000                   __pnvBANK0 0035           interrupt_function 0004  
+       __end_of_init_system 00FD                   clear_ram0 00FD                 _init_system 00D9  
+                  _reset_rx 0105                    intlevel1 0000                  _OPTION_REG 0081  

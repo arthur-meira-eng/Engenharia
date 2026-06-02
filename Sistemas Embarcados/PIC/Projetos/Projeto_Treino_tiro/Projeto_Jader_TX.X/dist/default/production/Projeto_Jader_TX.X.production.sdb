@@ -1,0 +1,190 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12F675 ]
+[d frameptr 0 ]
+"5 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"10 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"8 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Projeto_Jader_TX.X\rf433.c
+[v _tempo tempo `(v  1 s 1 tempo ]
+"12
+[v _envia_1 envia_1 `(v  1 s 1 envia_1 ]
+"19
+[v _envia_0 envia_0 `(v  1 s 1 envia_0 ]
+"26
+[v _start_rf start_rf `(v  1 s 1 start_rf ]
+"33
+[v _preambulo preambulo `(v  1 s 1 preambulo ]
+"42
+[v _envia_byte envia_byte `(v  1 s 1 envia_byte ]
+"53
+[v _checksum checksum `(uc  1 s 1 checksum ]
+"60
+[v _envia_pacote envia_pacote `(v  1 e 1 0 ]
+"50 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Projeto_Jader_TX.X\TX.c
+[v _main main `(v  1 e 1 0 ]
+"121
+[v _button button `(v  1 e 1 0 ]
+"149
+[v _adc_init adc_init `(v  1 e 1 0 ]
+"160
+[v _adc_read adc_read `(uc  1 e 1 0 ]
+"216 C:/Program Files/Microchip/MPLABX/v6.30/packs/Microchip/PIC10-12Fxxx_DFP/1.8.184/xc8\pic\include\proc/pic12f675.h
+[v _GPIO GPIO `VEuc  1 e 1 @5 ]
+"562
+[v _CMCON CMCON `VEuc  1 e 1 @25 ]
+"621
+[v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
+"641
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @31 ]
+[s S26 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nGPPU 1 0 :1:7 
+]
+"745
+[s S33 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+]
+[u S37 . 1 `S26 1 . 1 0 `S33 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES37  1 e 1 @129 ]
+"795
+[v _TRISIO TRISIO `VEuc  1 e 1 @133 ]
+"927
+[v _OSCCAL OSCCAL `VEuc  1 e 1 @144 ]
+[s S52 . 1 `uc 1 WPU0 1 0 :1:0 
+`uc 1 WPU1 1 0 :1:1 
+`uc 1 WPU2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 WPU4 1 0 :1:4 
+`uc 1 WPU5 1 0 :1:5 
+]
+"1002
+[u S59 . 1 `S52 1 . 1 0 ]
+[v _WPUbits WPUbits `VES59  1 e 1 @149 ]
+"1402
+[v _ANSEL ANSEL `VEuc  1 e 1 @159 ]
+"1584
+[v _GO_nDONE GO_nDONE `VEb  1 e 0 @249 ]
+"1593
+[v _GP2 GP2 `VEb  1 e 0 @42 ]
+"1599
+[v _GP4 GP4 `VEb  1 e 0 @44 ]
+"39 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Projeto_Jader_TX.X\TX.c
+[v _valor_x valor_x `uc  1 e 1 0 ]
+"40
+[v _valor_y valor_y `uc  1 e 1 0 ]
+"44
+[v _flag flag `uc  1 e 1 0 ]
+"50
+[v _main main `(v  1 e 1 0 ]
+{
+"80
+[v main@pulso_y pulso_y `uc  1 a 1 11 ]
+"79
+[v main@pulso_x pulso_x `uc  1 a 1 10 ]
+"86
+[v main@ultimo_x ultimo_x `uc  1 s 1 ultimo_x ]
+"101
+[v main@ultimo_y ultimo_y `uc  1 s 1 ultimo_y ]
+"115
+} 0
+"121
+[v _button button `(v  1 e 1 0 ]
+{
+"133
+[v button@i i `uc  1 a 1 6 ]
+"143
+} 0
+"60 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Projeto_Jader_TX.X\rf433.c
+[v _envia_pacote envia_pacote `(v  1 e 1 0 ]
+{
+[v envia_pacote@comando comando `uc  1 p 1 wreg ]
+[v envia_pacote@comando comando `uc  1 p 1 wreg ]
+[v envia_pacote@comando comando `uc  1 p 1 3 ]
+"69
+} 1
+"26
+[v _start_rf start_rf `(v  1 s 1 start_rf ]
+{
+"31
+} 0
+"33
+[v _preambulo preambulo `(v  1 s 1 preambulo ]
+{
+"34
+[v preambulo@i i `uc  1 a 1 1 ]
+"40
+} 0
+"42
+[v _envia_byte envia_byte `(v  1 s 1 envia_byte ]
+{
+[v envia_byte@dado dado `uc  1 p 1 wreg ]
+"43
+[v envia_byte@i i `uc  1 a 1 2 ]
+"42
+[v envia_byte@dado dado `uc  1 p 1 wreg ]
+[v envia_byte@dado dado `uc  1 p 1 1 ]
+"51
+} 1
+"12
+[v _envia_1 envia_1 `(v  1 s 1 envia_1 ]
+{
+"17
+} 0
+"19
+[v _envia_0 envia_0 `(v  1 s 1 envia_0 ]
+{
+"24
+} 0
+"8
+[v _tempo tempo `(v  1 s 1 tempo ]
+{
+"10
+} 0
+"53
+[v _checksum checksum `(uc  1 s 1 checksum ]
+{
+[v checksum@d d `uc  1 p 1 wreg ]
+[v checksum@d d `uc  1 p 1 wreg ]
+[v checksum@d d `uc  1 p 1 0 ]
+"55
+} 1
+"160 C:\Users\arthu\Desktop\Engenharia\Sistemas Embarcados\PIC\Projetos\Projeto_Treino_tiro\Projeto_Jader_TX.X\TX.c
+[v _adc_read adc_read `(uc  1 e 1 0 ]
+{
+[v adc_read@channel channel `uc  1 p 1 wreg ]
+[v adc_read@channel channel `uc  1 p 1 wreg ]
+"162
+[v adc_read@channel channel `uc  1 p 1 1 ]
+"173
+} 1
+"149
+[v _adc_init adc_init `(v  1 e 1 0 ]
+{
+"154
+} 0
+"5 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 6 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 5 ]
+[v ___awdiv@counter counter `uc  1 a 1 4 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"41
+} 0
